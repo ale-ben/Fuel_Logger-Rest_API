@@ -13,7 +13,9 @@ const OutputBox = ({fuelLogs, dispatch}: Props) => {
 	<div className='p-5 w-2/3 max-h-full h-full'>
 		<div className="bg-[#f9fafb] rounded-lg grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 max-h-full  min-h-[5rem] overflow-scroll">
 			{
-				fuelLogs.map((fuelLog) => (
+				fuelLogs
+				.sort((a, b) => b.date.getTime() - a.date.getTime())
+				.map((fuelLog) => (
 					<SingleDataPoint key={fuelLog.id} fuelLog={fuelLog} dispatch={dispatch}/>
 				))
 			}

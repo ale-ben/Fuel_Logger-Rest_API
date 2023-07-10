@@ -1,7 +1,7 @@
 import React from "react";
 import {AiFillDelete, AiFillEdit} from "react-icons/ai";
-import { FuelLog, Actions } from "../models/StateModel";
-
+import { Actions } from "../models/StateModel";
+import { FuelLog } from "../models/FuelLog";
 
 interface Props {
 	fuelLog: FuelLog;

@@ -1,6 +1,7 @@
 import React from 'react'
 import SingleDataPoint from './SingleDataPoint'
-import { FuelLog, Actions } from '../models/StateModel';
+import { Actions } from '../models/StateModel';
+import { FuelLog } from '../models/FuelLog';
 
 interface Props {
 	  fuelLogs: FuelLog[];

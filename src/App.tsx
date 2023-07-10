@@ -12,8 +12,7 @@ const initialStatus: StateModel = {
 			price: 50,
 			date: new Date()
 		}
-	],
-	inputBox: ""
+	]
 };
 
 function App() {
@@ -24,7 +23,7 @@ function App() {
 		<div className="bg-blue-200 flex flex-col h-screen max-h-screen overflow-hidden">
 			<span className="text-5xl pt-4 justify-center flex">Fuel Logger</span>
 			<div className="px-6 pb-3 flex flex-row h-[90%]">
-				<InputField/>
+				<InputField state={state} dispatch={dispatch}/>
 				<OutputBox fuelLogs={state.fuelLogs} dispatch={dispatch}/>
 			</div>
 		</div>

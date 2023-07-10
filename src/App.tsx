@@ -1,26 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import InputField from "./components/InputField";
+import OutputBox from "./components/OutputBox";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className="bg-blue-200 flex flex-col h-screen max-h-screen overflow-hidden">
+			<span className="text-5xl pt-4 justify-center flex">Fuel Logger</span>
+			<div className="px-6 pb-3 flex flex-row h-[90%]">
+				<InputField/>
+				<OutputBox/>
+			</div>
+		</div>
+	);
 }
 
 export default App;

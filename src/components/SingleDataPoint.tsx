@@ -16,31 +16,14 @@ const SingleDataPoint = ({fuelLog, dispatch} : Props) => {
 		<div className="m-2 px-6 pt-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col">
 			<div className="flex flex-col">
 				<h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{`${fuelLog.date.getDate()}/${fuelLog.date.getMonth()}/${fuelLog.date.getFullYear()} - ${fuelLog.date.getHours()}:${fuelLog.date.getMinutes()}`}</h5>
-				<div className="flex flex-row justify-evenly">
-					{
-						edit //TODO: Fix this
-							? <input className="" 
-							value={editFuelLog.odometer}
-							onChange={(e) => {
-								setEditFuelLog({
-									...editFuelLog,
-									odometer: parseInt(e.target.value)})
-							}}/>
-							: <p className="">{fuelLog.odometer}</p>
-					}
-
+				<div className="grid grid-cols-2 gap-x-3">
+					<p className="text-right">{fuelLog.odometer}</p>
 					<p className="">Km</p>
-				</div>
-				<div className="flex flex-row justify-evenly">
-					<p className="">{fuelLog.liters}</p>
+					<p className="text-right">{fuelLog.liters}</p>
 					<p>L</p>
-				</div>
-				<div className="flex flex-row justify-evenly">
-					<p className="">{fuelLog.price}</p>
+					<p className="text-right">{fuelLog.price}</p>
 					<p>€</p>
-				</div>
-				<div className="flex flex-row justify-evenly">
-					<p className="">{fuelLog.price / fuelLog.liters}</p>
+					<p className="text-right">{fuelLog.price / fuelLog.liters}</p>
 					<p>€/L</p>
 				</div>
 			</div>

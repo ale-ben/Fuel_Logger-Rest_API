@@ -1,4 +1,4 @@
-import {FuelLog} from "./FuelLog";
+import {FuelLog, parseFuelNote} from "./FuelLog";
 
 export interface StateModel {
 	fuelLogs: FuelLog[];
@@ -22,9 +22,9 @@ export type Actions = |{
 export const reducer = (state : StateModel, action : Actions): StateModel => {
 	switch (action.type) {
 		case "PARSE":
-			console.warn("ACTION NOT IMPLEMENTED");
-			console.log(action.payload);
-			return state;
+			console.log("Parsing fuel logs");
+			let result = parseFuelNote(action.payload)
+			return {...state, fuelLogs: result.logs};
 		case "REMOVE":
 			console.debug("Deleting", state.fuelLogs.filter((fuelLog) => fuelLog.id === action.payload));
 			return {

@@ -5,13 +5,7 @@ import { reducer, StateModel } from "./models/StateModel";
 
 const initialStatus: StateModel = {
 	fuelLogs: [
-		{
-			id: 0,
-			odometer: 1000,
-			liters: 50,
-			price: 50,
-			date: new Date()
-		}
+
 	]
 };
 

@@ -2,7 +2,7 @@ name: Push to Deta Space
 on:
   push:
     branches:
-      - main
+      - develop
 
 jobs:
   push-to-space:

@@ -1,6 +1,6 @@
 'use server';
 
-import { FuelLog } from "@/models/FuelLog";
+import { FuelLog, FuelLogOverview, getFuelLogOverview } from "@/models/FuelLog";
 
 const templateLogs : FuelLog[] = [
 	{
@@ -50,6 +50,6 @@ const templateLogs : FuelLog[] = [
 	}
 ];
 
-export async function getFuelLogs(limit?: number, offset?: number): Promise<FuelLog[]> {
-	return templateLogs;
+export async function getFuelLogs(limit?: number, offset?: number): Promise<FuelLogOverview[]> {
+	return templateLogs.map(log => getFuelLogOverview(log));
 }

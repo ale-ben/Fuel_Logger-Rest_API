@@ -1,23 +1,25 @@
-import { FuelLog, FuelLogOverview, getFuelLogOverview } from '@/models/FuelLog';
+import { FuelLogOverview } from '@/models/FuelLog';
+import Link from 'next/link';
 
 interface Props {
-  element: FuelLog;
+  element: FuelLogOverview;
 }
 
 const LogElement = ({ element }: Props) => {
-  const elementOverview: FuelLogOverview = getFuelLogOverview(element);
-  return <div className='flex flex-col p-3 border-red-200 border-2'>
-	<div>
-		{elementOverview.date.getDate()}/{elementOverview.date.getMonth()}/{elementOverview.date.getFullYear()}
-	</div>
-	<div>
-		{elementOverview.mileage} km
-	</div>
-	<div>
-		{elementOverview.liters} L
-	</div>
-
-  </div>;
+  return (
+    <Link
+      href={'/logs/' + element.id}
+      className="flex w-48 flex-col items-center justify-between rounded border-2 bg-gray-100 px-4 py-3 text-slate-600 transition-all ease-in-out hover:cursor-pointer"
+    >
+      <div className="text-xl">
+        {element.date.getDate()}/{element.date.getMonth()}/
+        {element.date.getFullYear()}
+      </div>
+      <div>{element.mileage} km</div>
+      <div>{element.liters} L</div>
+      <div>{element.price} €</div>
+    </Link>
+  );
 };
 
 export default LogElement;

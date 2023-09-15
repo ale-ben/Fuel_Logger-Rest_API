@@ -14,9 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <Navbar />
-		<div className='flex w-full grow border-blue-400 border-2'>
+      <body className='flex flex-col w-screen h-screen'>
+        <Navbar/>
+		<div className='w-full h-full border-blue-300 border-2 overflow-hidden'>
         {children}
 		</div>
       </body>

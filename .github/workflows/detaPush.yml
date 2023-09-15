@@ -1,5 +1,8 @@
-name: Push to Space
-on: push
+name: Push to Deta Space
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   push-to-space:

@@ -14,7 +14,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-		<Navbar />
+      <body>
+        <Navbar />
+		<div className='flex w-full grow border-blue-400 border-2'>
+        {children}
+		</div>
+      </body>
     </html>
   );
 }

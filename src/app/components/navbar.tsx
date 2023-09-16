@@ -27,11 +27,11 @@ const navLinks: NavbarElementsInterface[] = [
     href: '/view',
     elements: [
       {
-        href: '/data',
+        href: '/dataview',
         label: 'Data View',
       },
       {
-        href: '/graph',
+        href: '/graphview',
         label: 'Graph View',
       },
     ],

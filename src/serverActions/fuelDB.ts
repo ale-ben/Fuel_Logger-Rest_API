@@ -224,3 +224,11 @@ export async function saveFuelLogs(logs: FuelLog[]) {
     }
   }
 }
+
+/**
+ * Delete a fuel log from the database
+ * @param key The key of the fuel log to delete
+ */
+export async function deleteFuelLog(key: string) {
+  await fuelDB.delete(key);
+}

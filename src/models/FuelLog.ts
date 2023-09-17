@@ -29,6 +29,11 @@ export interface ErrorLog {
   priceRate?: number;
 }
 
+/**
+ * Checks if an object is a fuel log entry
+ * @param obj The object to check
+ * @returns True if the object is a fuel log entry, false otherwise
+ */
 export function isFuelLogEntry(obj: any): obj is FuelEntry {
   const checkObj = obj !== undefined;
   const checkDate = obj.date instanceof Date;
@@ -47,6 +52,11 @@ export function isFuelLogEntry(obj: any): obj is FuelEntry {
   }
 }
 
+/**
+ * Checks if an object is a fuel log
+ * @param obj The object to check
+ * @returns True if the object is a fuel log, false otherwise
+ */
 export function isFuelLog(obj: any): obj is FuelLog {
   const checkObj = obj !== undefined;
   const checkMileage = Number.isFinite(obj.mileage);

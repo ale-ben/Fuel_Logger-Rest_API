@@ -1,15 +1,12 @@
 'use server';
 
-import {
-  FuelLog,
-  FuelLogOverview,
-  getFuelLogOverview,
-  isFuelLog,
-} from '@/models/FuelLog';
+import { FuelLog, FuelLogOverview, getFuelLogOverview } from '@/models/FuelLog';
 
 import { Deta } from 'deta'; // import Deta
 
+// Initialize deta client
 const deta = Deta();
+// Initialize your DB
 const fuelDB = deta.Base('fuelDB');
 
 type StorableFuelEntry = {
@@ -76,6 +73,11 @@ const templateLogs: FuelLog[] = [
   },
 ];
 
+/**
+ * Convert a FuelLog to a StorableFuelLog
+ * @param log The FuelLog to convert
+ * @returns A StorableFuelLog
+ */
 function fuelLogToStorable(log: FuelLog): StorableFuelLog {
   return {
     ...log,
@@ -88,6 +90,11 @@ function fuelLogToStorable(log: FuelLog): StorableFuelLog {
   };
 }
 
+/**
+ * Convert a StorableFuelLog to a FuelLog
+ * @param storableLog The StorableFuelLog to convert
+ * @returns A FuelLog
+ */
 function storableToFuelLog(storableLog: StorableFuelLog): FuelLog {
   return {
     ...storableLog,
@@ -100,6 +107,11 @@ function storableToFuelLog(storableLog: StorableFuelLog): FuelLog {
   };
 }
 
+/**
+ * Check if an object is a StorableFuelLogEntry
+ * @param obj The object to check
+ * @returns True if the object is a StorableFuelLogEntry, false otherwise
+ */
 function isStorableFuelLogEntry(obj: any): obj is StorableFuelEntry {
   const checkObj = obj !== undefined;
   const checkDate = Number.isFinite(obj.date);
@@ -118,6 +130,11 @@ function isStorableFuelLogEntry(obj: any): obj is StorableFuelEntry {
   }
 }
 
+/**
+ * Check if an object is a StorableFuelLog
+ * @param obj The object to check
+ * @returns True if the object is a StorableFuelLog, false otherwise
+ */
 function isStorableFuelLog(obj: any): obj is StorableFuelLog {
   const checkObj = obj !== undefined;
   const checkMileage = Number.isFinite(obj.mileage);
@@ -146,26 +163,46 @@ function isStorableFuelLog(obj: any): obj is StorableFuelLog {
   }
 }
 
+/**
+ * Get a list of fuel logs from the database
+ * @param limit Optional limit of logs to fetch
+ * @param offset Optional offset of logs to fetch
+ * @returns A list of fuel log overviews or undefined if no logs are found
+ */
 export async function getFuelLogs(
   limit?: number,
   offset?: number,
 ): Promise<FuelLogOverview[] | undefined> {
+  // Fetch the data
   const logs = await fuelDB.fetch();
+  // If no logs are found, return undefined
   if (logs.count === 0) return undefined;
-  const convertedLogs = logs.items.map((elem) => {
+  // Convert the logs to (FuelLog | undefined)[]
+  const convertedLogs: (FuelLog | undefined)[] = logs.items.map((elem) => {
     if (isStorableFuelLog(elem)) return storableToFuelLog(elem);
-    else {
-      console.log('Invalid fuel log ' + JSON.stringify(elem));
-      undefined;
-    }
+    else undefined;
   });
-  return convertedLogs.filter((elem) => elem !== undefined).map((elem) => getFuelLogOverview(elem as FuelLog)) as FuelLogOverview[];
+
+  // Filter out undefined logs and convert them to FuelLogOverview
+  return convertedLogs
+    .filter((elem) => elem !== undefined)
+    .map((elem) => getFuelLogOverview(elem as FuelLog)) as FuelLogOverview[];
 }
 
 export async function saveFuelLogs(logs: FuelLog[]) {
-  const convertedLogs: StorableFuelLog[] = templateLogs.map((elem) =>
+  // Convert the logs to StorableFuelLog
+  const convertedLogs: StorableFuelLog[] = logs.map((elem) =>
     fuelLogToStorable(elem),
   );
-  //FIXME: putMany will crash with more than 25 elems
-  return fuelDB.putMany(convertedLogs);
+
+  if (convertedLogs.length === 0) return;
+  if (convertedLogs.length < 25) {
+    await fuelDB.putMany(convertedLogs);
+  } else {
+    let i = 0;
+    while (i < convertedLogs.length) {
+      await fuelDB.putMany(convertedLogs.slice(i, i + 25));
+      i += 25;
+    }
+  }
 }

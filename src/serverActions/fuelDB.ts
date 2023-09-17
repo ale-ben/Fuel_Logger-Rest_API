@@ -3,12 +3,15 @@
 import { FuelLog, FuelLogOverview, getFuelLogOverview } from '@/models/FuelLog';
 
 import { Deta } from 'deta'; // import Deta
+import Base from 'deta/dist/types/base';
 import { FetchResponse } from 'deta/dist/types/types/base/response';
+import { getSettings } from './settingsDB';
 
 // Initialize deta client
 const deta = Deta();
-// Initialize your DB
-const fuelDB = deta.Base('fuelDB');
+
+// Select the database
+let fuelDB: Base = deta.Base('fuelDB'); // Default database
 
 type StorableFuelEntry = {
   date: number;
@@ -232,3 +235,13 @@ export async function saveFuelLogs(logs: FuelLog[]) {
 export async function deleteFuelLog(key: string) {
   await fuelDB.delete(key);
 }
+
+/**
+ * Align fuel db settings with settings db
+ */
+export async function updateFuelDBSettings() {
+  const settings = await getSettings();
+  fuelDB = deta.Base(settings.currentDB);
+}
+
+updateFuelDBSettings();

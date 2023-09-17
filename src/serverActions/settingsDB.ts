@@ -1,7 +1,7 @@
 'use server';
 
 import {
-  Settings,
+  SettingsType,
   generateDefaultSettings,
   isSettings,
 } from '@/models/settings';
@@ -16,9 +16,9 @@ const settingsDB = deta.Base('settingsDB');
  * Get the settings
  * @returns The settings
  */
-export async function getSettings(): Promise<Settings> {
+export async function getSettings(): Promise<SettingsType> {
   // Fetch the settings
-  const settings = await settingsDB.fetch();
+  const settings = await settingsDB.fetch({});
 
   // If the settings are not found, use the default settings
   if (settings.count === 0) {
@@ -29,14 +29,16 @@ export async function getSettings(): Promise<Settings> {
   }
 
   // Parse the settings
-  let settingsObj: { [key: string]: string | number } = {};
+  let settingsObj: { [key: string]: string } = {};
   settings.items.forEach((item) => {
     if (
-      typeof item.key === 'number' &&
-      (typeof item.value === 'string' || typeof item.value === 'number')
+      typeof item.key === 'string' &&
+      (typeof item.value === 'string')
     ) {
       settingsObj[item.key] = item.value;
-    }
+    } else {
+		console.log(`Invalid settings item ${JSON.stringify(item)}`);
+	}
   });
 
   // If the settings are invalid, use the default settings
@@ -54,7 +56,7 @@ export async function getSettings(): Promise<Settings> {
  * @param settings The settings to set
  * TODO: Optimize this function by updating only the changed settings
  */
-export async function setSettings(settings: Settings): Promise<void> {
+export async function setSettings(settings: SettingsType): Promise<void> {
   Object.keys(settings).forEach(async (key) => {
     await settingsDB.put({ key: key, value: settings[key] });
   });

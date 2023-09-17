@@ -1,13 +1,6 @@
-export enum Theme {
-  Light,
-  Dark,
-  Auto,
-}
-
-export type Settings = {
-  [key: string]: string | number;
+export type SettingsType = {
+  [key: string]: string;
   currentDB: string;
-  theme: Theme;
 };
 
 /**
@@ -15,18 +8,16 @@ export type Settings = {
  * @param obj The object to check
  * @returns True if the object is a settings object, false otherwise
  */
-export function isSettings(obj: any): obj is Settings {
+export function isSettings(obj: any): obj is SettingsType {
   const checkObj = obj !== undefined;
   const checkCurrentDB = typeof obj.currentDB === 'string';
-  const checkTheme = typeof obj.theme === 'number';
 
-  if (checkObj && checkCurrentDB && checkTheme) {
+  if (checkObj && checkCurrentDB) {
     return true;
   } else {
     console.log(`Invalid settings ${JSON.stringify(obj)}
 	obj: ${checkObj}
 	typeof obj.currentDB === 'string': ${checkCurrentDB}
-	typeof obj.theme === 'number': ${checkTheme}
 	  `);
     return false;
   }
@@ -39,6 +30,5 @@ export function isSettings(obj: any): obj is Settings {
 export function generateDefaultSettings() {
   return {
     currentDB: 'fuelDB',
-    theme: Theme.Auto,
   };
 }

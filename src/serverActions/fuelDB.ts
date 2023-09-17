@@ -3,6 +3,7 @@
 import { FuelLog, FuelLogOverview, getFuelLogOverview } from '@/models/FuelLog';
 
 import { Deta } from 'deta'; // import Deta
+import { FetchResponse } from 'deta/dist/types/types/base/response';
 
 // Initialize deta client
 const deta = Deta();
@@ -166,15 +167,21 @@ function isStorableFuelLog(obj: any): obj is StorableFuelLog {
 /**
  * Get a list of fuel logs from the database
  * @param limit Optional limit of logs to fetch
- * @param offset Optional offset of logs to fetch
+ * @param lastKey Optional Key of the last seen element, needed for pagination
  * @returns A list of fuel log overviews or undefined if no logs are found
  */
 export async function getFuelLogs(
   limit?: number,
-  offset?: number,
+  lastKey?: string,
 ): Promise<FuelLogOverview[] | undefined> {
   // Fetch the data
-  const logs = await fuelDB.fetch();
+
+  let logs: FetchResponse;
+  if (limit && lastKey) logs = await fuelDB.fetch({}, { limit, last: lastKey });
+  else if (limit) logs = await fuelDB.fetch({}, { limit });
+  else if (lastKey) logs = await fuelDB.fetch({}, { last: lastKey });
+  else logs = await fuelDB.fetch({});
+
   // If no logs are found, return undefined
   if (logs.count === 0) return undefined;
   // Convert the logs to (FuelLog | undefined)[]
@@ -187,6 +194,17 @@ export async function getFuelLogs(
   return convertedLogs
     .filter((elem) => elem !== undefined)
     .map((elem) => getFuelLogOverview(elem as FuelLog)) as FuelLogOverview[];
+}
+
+/**
+ * Get a fuel log from the database
+ * @param key The key of the fuel log to fetch
+ * @returns A fuel log or undefined if no log is found
+ */
+export async function getFuelLog(key: string): Promise<FuelLog | undefined> {
+  const log = await fuelDB.get(key);
+  if (isStorableFuelLog(log)) return storableToFuelLog(log);
+  else return undefined;
 }
 
 export async function saveFuelLogs(logs: FuelLog[]) {

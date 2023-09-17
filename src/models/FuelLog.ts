@@ -1,18 +1,17 @@
 export interface FuelEntry {
-  id: number;
   date: Date;
   liters: number;
   price: number;
 }
 
 export interface FuelLog {
-  id: number;
+  key?: string;
   mileage: number;
   entries: FuelEntry[];
 }
 
 export interface FuelLogOverview {
-	id: number;
+	key: string;
 	mileage: number;
 	date: Date;
 	liters: number;
@@ -20,7 +19,7 @@ export interface FuelLogOverview {
 }
 
 export interface ErrorLog {
-  id: number;
+  key: string;
   message: string;
   log: string;
   date?: Date;
@@ -35,9 +34,10 @@ export interface ErrorLog {
  * @param log The fuel log
  * @returns A FuelLogOverview
  */
-export function getFuelLogOverview(log: FuelLog): FuelLogOverview {
+export function getFuelLogOverview(log: FuelLog): FuelLogOverview | undefined {
+	if (!log.key) return undefined;
 	return {
-		id: log.id,
+		key: log.key,
 		mileage: log.mileage,
 		date: log.entries[0].date,
 		liters: log.entries.map(entry => entry.liters).reduce((a, b) => a + b, 0),

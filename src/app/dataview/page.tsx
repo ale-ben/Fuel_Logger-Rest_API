@@ -7,7 +7,7 @@ export default async function DataView() {
   return (
     <div className="flex grow flex-row flex-wrap justify-items-stretch gap-4 p-5">
       {logs.map((log: FuelLogOverview) => (
-        <LogElement element={log} key={log.id} />
+        <LogElement element={log} key={log.key} />
       ))}
     </div>
   );

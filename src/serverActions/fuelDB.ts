@@ -8,7 +8,8 @@ import { FetchResponse } from 'deta/dist/types/types/base/response';
 import { getSettings } from './settingsDB';
 
 // Initialize deta client
-const deta = Deta();
+const DETA_PROJECT_KEY = process.env.DETA_PROJECT_KEY || 'key';
+const deta = Deta(DETA_PROJECT_KEY);
 
 // Select the database
 let fuelDB: Base = deta.Base('fuelDB'); // Default database

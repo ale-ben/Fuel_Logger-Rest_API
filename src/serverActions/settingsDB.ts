@@ -8,7 +8,8 @@ import {
 import { Deta } from 'deta'; // import Deta
 
 // Initialize deta client
-const deta = Deta();
+const DETA_PROJECT_KEY = process.env.DETA_PROJECT_KEY || 'key';
+const deta = Deta(DETA_PROJECT_KEY);
 // Initialize your DB
 const settingsDB = deta.Base('settingsDB');
 

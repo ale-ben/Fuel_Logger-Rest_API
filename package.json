@@ -30,7 +30,7 @@
 		"autoprefixer": "^10.4.16",
 		"deta": "^2.0.0",
 		"eslint": "8.52.0",
-		"eslint-config-next": "14.0.0",
+		"eslint-config-next": "14.0.1",
 		"husky": "^8.0.3",
 		"lint-staged": "^15.0.2",
 		"postcss": "^8.4.31",

@@ -14,11 +14,11 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en" className="dark">
+		<html suppressHydrationWarning lang="en" className="dark">
 			<body className="flex h-screen w-screen flex-col">
 				<Providers>
 					<Navbar />
-					<div className="h-full w-full overflow-hidden border-2 border-blue-300">
+					<div className="h-full w-full overflow-hidden">
 						{children}
 					</div>
 				</Providers>

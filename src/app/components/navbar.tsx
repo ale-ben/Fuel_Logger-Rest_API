@@ -56,8 +56,8 @@ const Navbar1 = () => {
 								index === 2 // TODO: This should be dynamic
 									? 'primary'
 									: index === navbarElems.length - 1
-									? 'danger'
-									: 'foreground'
+									  ? 'danger'
+									  : 'foreground'
 							}
 							className="w-full"
 							href={item.href}

@@ -15,10 +15,10 @@ export default function RootLayout({
 }) {
 	return (
 		<html suppressHydrationWarning lang="en" className="dark">
-			<body className="flex h-screen w-screen flex-col">
+			<body>
 				<Providers>
-					<Navbar />
-					<div className="h-full w-full overflow-hidden">
+					<div className="flex h-screen w-screen flex-col gap-5">
+						<Navbar />
 						{children}
 					</div>
 				</Providers>

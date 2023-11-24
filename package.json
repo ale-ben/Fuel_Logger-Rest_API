@@ -3,6 +3,8 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
+		"preinstall": "npx only-allow pnpm",
+		"prepare": "husky install",
 		"dev": "next dev",
 		"debug": "NODE_OPTIONS='--inspect' next dev",
 		"build": "next build",
@@ -10,9 +12,8 @@
 		"lint": "next lint",
 		"style": "prettier --write 'src/**/*.{ts,tsx}'",
 		"space dev": "space dev",
-		"space push": "space push",
-		"format all": "prettier . --write",
-		"prepare": "husky install"
+		"space push": "space push --skip-logs",
+		"format all": "prettier . --write"
 	},
 	"dependencies": {
 		"@nextui-org/react": "^2.2.9",
@@ -30,7 +31,6 @@
 	},
 	"devDependencies": {
 		"autoprefixer": "^10.4.16",
-		"deta": "^2.0.0",
 		"eslint": "8.54.0",
 		"eslint-config-next": "14.0.3",
 		"eslint-config-prettier": "^9.0.0",
@@ -47,6 +47,6 @@
 		"*.{js,css,md, ts, tsx, jsx}": "prettier --write"
 	},
 	"engines": {
-		"node": ">=16.17.0"
+		"node": "16.16.0"
 	}
 }

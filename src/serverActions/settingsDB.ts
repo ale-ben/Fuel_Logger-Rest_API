@@ -32,14 +32,11 @@ export async function getSettings(): Promise<SettingsType> {
   // Parse the settings
   let settingsObj: { [key: string]: string } = {};
   settings.items.forEach((item) => {
-    if (
-      typeof item.key === 'string' &&
-      (typeof item.value === 'string')
-    ) {
+    if (typeof item.key === 'string' && typeof item.value === 'string') {
       settingsObj[item.key] = item.value;
     } else {
-		console.log(`Invalid settings item ${JSON.stringify(item)}`);
-	}
+      console.log(`Invalid settings item ${JSON.stringify(item)}`);
+    }
   });
 
   // If the settings are invalid, use the default settings

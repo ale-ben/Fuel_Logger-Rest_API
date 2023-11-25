@@ -12,7 +12,7 @@ const SingleLog = ({ log }: SingleLogProps) => {
 			<div className="flex flex-col px-3 pb-3">
 				<div className="flex flex-row justify-evenly">
 					<p>Km</p>
-					<p>{log.mileage.toFixed(2)}</p>
+					<p>{log.odometer.toFixed(2)}</p>
 				</div>
 				<div className="flex flex-row justify-evenly">
 					<p>L</p>

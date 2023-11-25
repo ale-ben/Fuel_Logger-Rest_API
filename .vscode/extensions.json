@@ -14,6 +14,7 @@
 	"ecmel.vscode-html-css",
 	"orta.vscode-jest",
 	"leizongmin.node-module-intellisense",
-	"christian-kohler.npm-intellisense"
+	"christian-kohler.npm-intellisense",
+	"afzalsayed96.reacticons"
 ]
 }

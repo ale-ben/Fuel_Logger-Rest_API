@@ -9,9 +9,8 @@ const fuelDB = deta.Base('fuel');
 
 export async function getFuelLogs(): Promise<FuelLog[] | undefined> {
 	const res = await fuelDB.fetch({});
-
-	console.log(res);
-	if (res !== undefined && IsFuelLogArray(res.items)) return res.items as FuelLog[];
+	if (res !== undefined && IsFuelLogArray(res.items))
+		return res.items as FuelLog[];
 	else return undefined;
 }
 

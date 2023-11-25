@@ -15,6 +15,7 @@ import { BsTrash } from 'react-icons/bs';
 import { createFuelLog } from '@/serverActions/FuelLogStorage';
 import { usePathname } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
+import { RevalidatePath } from '@/serverActions/genericActions';
 
 interface NewLogModalProps {
 	isOpen: boolean;
@@ -78,7 +79,7 @@ const NewLogModal = ({ isOpen, setOpen }: NewLogModalProps) => {
 					<Accordion
 						isCompact
 						selectionMode="single"
-						defaultExpandedKeys={["0"]}
+						defaultExpandedKeys={['0']}
 						variant="splitted"
 					>
 						{fuelLog.entries
@@ -252,6 +253,7 @@ const NewLogModal = ({ isOpen, setOpen }: NewLogModalProps) => {
 							createFuelLog(fuelLog);
 							setFuelLog(defaultLog);
 							setOpen(false);
+							RevalidatePath(path);
 						}}
 					>
 						Save

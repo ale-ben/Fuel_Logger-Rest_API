@@ -67,3 +67,15 @@ export const DummyLogs: FuelLog[] = [
 		]
 	}
 ];
+
+export function GetDate(log: FuelLog): Date {
+	return new Date(log.entries[0].date);
+}
+
+export function GetAmount(log: FuelLog): number {
+	return log.entries.reduce((sum, entry) => sum + entry.amount, 0);
+}
+
+export function GetPrice(log: FuelLog): number {
+	return log.entries.reduce((sum, entry) => sum + entry.price, 0);
+}

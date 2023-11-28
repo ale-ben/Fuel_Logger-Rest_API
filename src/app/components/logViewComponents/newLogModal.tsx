@@ -1,21 +1,20 @@
+import { FuelEntry, FuelLog } from '@/models/FuelLog';
+import { createFuelLog } from '@/serverActions/FuelLogStorage';
+import { RevalidatePath } from '@/serverActions/genericActions';
+import { Accordion, AccordionItem } from '@nextui-org/accordion';
+import { Button } from '@nextui-org/button';
+import { Input } from '@nextui-org/input';
 import {
 	Modal,
-	ModalContent,
-	ModalHeader,
 	ModalBody,
-	ModalFooter
+	ModalContent,
+	ModalFooter,
+	ModalHeader
 } from '@nextui-org/modal';
-import { Button } from '@nextui-org/button';
-import { Dispatch, SetStateAction, useState } from 'react';
-import { FuelEntry, FuelLog } from '@/models/FuelLog';
-import { Input } from '@nextui-org/input';
-import { IoIosAdd } from 'react-icons/io';
-import { Accordion, AccordionItem } from '@nextui-org/accordion';
-import { BsTrash } from 'react-icons/bs';
-import { createFuelLog } from '@/serverActions/FuelLogStorage';
 import { usePathname } from 'next/navigation';
-import { revalidatePath } from 'next/cache';
-import { RevalidatePath } from '@/serverActions/genericActions';
+import { Dispatch, SetStateAction, useState } from 'react';
+import { BsTrash } from 'react-icons/bs';
+import { IoIosAdd } from 'react-icons/io';
 
 interface NewLogModalProps {
 	isOpen: boolean;

@@ -1,16 +1,13 @@
-import { BsFuelPumpFill } from 'react-icons/bs';
+import { Link } from '@nextui-org/link';
 import {
 	Navbar,
 	NavbarBrand,
 	NavbarContent,
-	NavbarItem,
-	NavbarMenu,
-	NavbarMenuItem,
-	NavbarMenuToggle
+	NavbarItem
 } from '@nextui-org/navbar';
-import { Link } from '@nextui-org/link';
-import NavbarButton from './navbarComponents/navbarButton';
+import { BsFuelPumpFill } from 'react-icons/bs';
 import DarkModeToggle from './navbarComponents/darkModeToggle';
+import NavbarButton from './navbarComponents/navbarButton';
 
 interface NavbarElems {
 	name: string;

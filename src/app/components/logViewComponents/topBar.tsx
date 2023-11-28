@@ -1,12 +1,12 @@
 'use client';
 
-import { Button } from '@nextui-org/button';
-import { useState } from 'react';
-import { IoIosAdd } from 'react-icons/io';
-import { BiRefresh } from 'react-icons/bi';
-import NewLogModal from './newLogModal';
 import { RevalidatePath } from '@/serverActions/genericActions';
+import { Button } from '@nextui-org/button';
 import { usePathname } from 'next/navigation';
+import { useState } from 'react';
+import { BiRefresh } from 'react-icons/bi';
+import { IoIosAdd } from 'react-icons/io';
+import NewLogModal from './newLogModal';
 
 const TopBar = () => {
 	const [isOpen, setOpen] = useState(false);

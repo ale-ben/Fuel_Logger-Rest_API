@@ -43,6 +43,11 @@ const Navbar1 = () => {
 
 			<NavbarContent justify="end">
 				<NavbarItem>
+					<Link href="/api/auth/signout" type="P" color="foreground">
+						Sign out
+					</Link>
+				</NavbarItem>
+				<NavbarItem>
 					<DarkModeToggle />
 				</NavbarItem>
 			</NavbarContent>

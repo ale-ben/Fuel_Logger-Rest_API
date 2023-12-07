@@ -1,5 +1,6 @@
 import { FuelLog, GetAmount, GetDate, GetPrice } from '@/models/FuelLog';
-import { Card, CardHeader } from '@nextui-org/card';
+import { Card, CardFooter, CardHeader } from '@nextui-org/card';
+import SingleLogOptions from './singleLogOptions';
 
 interface SingleLogProps {
 	log: FuelLog;
@@ -7,8 +8,10 @@ interface SingleLogProps {
 
 const SingleLog = ({ log }: SingleLogProps) => {
 	return (
-		<Card>
-			<CardHeader>{GetDate(log).toDateString()}</CardHeader>
+		<Card className="w-40">
+			<CardHeader className="flex justify-center">
+				{GetDate(log).toDateString()}
+			</CardHeader>
 			<div className="flex flex-col px-3 pb-3">
 				<div className="flex flex-row justify-evenly">
 					<p>Km</p>
@@ -27,6 +30,9 @@ const SingleLog = ({ log }: SingleLogProps) => {
 					<p>{(GetPrice(log) / GetAmount(log)).toFixed(2)}</p>
 				</div>
 			</div>
+			<CardFooter>
+				<SingleLogOptions />
+			</CardFooter>
 		</Card>
 	);
 };

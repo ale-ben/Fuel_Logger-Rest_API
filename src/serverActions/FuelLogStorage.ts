@@ -21,6 +21,6 @@ export async function getFuelLog(id: number): Promise<FuelLog | undefined> {
 	else return undefined;
 }
 
-export async function createFuelLog(log: FuelLog): Promise<void> {
+export async function saveFuelLog(log: FuelLog): Promise<void> {
 	await fuelDB.put(log as unknown as ObjectType);
 }

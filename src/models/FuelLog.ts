@@ -5,9 +5,21 @@ export interface FuelEntry {
 }
 
 export interface FuelLog {
+	key?: string;
 	odometer: number;
 	entries: FuelEntry[];
 }
+
+export const defaultFuelEntry: FuelEntry = {
+	date: new Date().getTime(),
+	amount: 0,
+	price: 0
+};
+
+export const defaultFuelLog: FuelLog = {
+	odometer: 0,
+	entries: [defaultFuelEntry]
+};
 
 export const DummyLogs: FuelLog[] = [
 	{

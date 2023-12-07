@@ -49,10 +49,18 @@ export function FuelLogModalReducer(
 ): FuelLogModalReducerState {
 	switch (action.type) {
 		case 'OPEN_MODAL':
-			return {
-				...state,
-				isModalOpen: true
-			};
+			if (action.payload) {
+				return {
+					...state,
+					isModalOpen: true,
+					fuelLog: action.payload
+				};
+			} else {
+				return {
+					...state,
+					isModalOpen: true
+				};
+			}
 		case 'CLOSE_MODAL':
 			return {
 				...state,

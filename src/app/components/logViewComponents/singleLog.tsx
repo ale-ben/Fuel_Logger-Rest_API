@@ -31,7 +31,7 @@ const SingleLog = ({ log }: SingleLogProps) => {
 				</div>
 			</div>
 			<CardFooter>
-				<SingleLogOptions />
+				<SingleLogOptions log={log} />
 			</CardFooter>
 		</Card>
 	);

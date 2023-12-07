@@ -42,7 +42,7 @@
 		"typescript": "^5"
 	},
 	"lint-staged": {
-		"*.{js,css,md, ts, tsx, jsx}": [
+		"*.{js,css,md,ts,tsx,jsx}": [
 			"eslint --fix",
 			"prettier --write"
 		]

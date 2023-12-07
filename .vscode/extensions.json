@@ -1,20 +1,11 @@
 {
-  "recommendations": [
-	"msjsdiag.vscode-react-native",
-	"ms-vscode.vscode-typescript-next",
-	"bradlc.vscode-tailwindcss",
-	"esbenp.prettier-vscode",
-	"dsznajder.es7-react-js-snippets",
-	"wallabyjs.console-ninja",
-	"oouo-diogo-perdigao.docthis",
-	"dbaeumer.vscode-eslint",
-	"iulian-radu-at.find-unused-exports",
-	"github.vscode-github-actions",
-	"sidthesloth.html5-boilerplate",
-	"ecmel.vscode-html-css",
-	"orta.vscode-jest",
-	"leizongmin.node-module-intellisense",
-	"christian-kohler.npm-intellisense",
-	"afzalsayed96.reacticons"
-]
+	"recommendations": [
+		"bradlc.vscode-tailwindcss",
+		"afzalsayed96.reacticons",
+		"ms-vscode.vscode-typescript-next",
+		"dbaeumer.vscode-eslint",
+		"esbenp.prettier-vscode",
+		"wallabyjs.console-ninja",
+		"chakrounanas.turbo-console-log"
+	]
 }

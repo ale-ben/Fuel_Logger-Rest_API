@@ -1,4 +1,3 @@
-import { saveFuelLog } from '@/serverActions/FuelLogStorage';
 import { FuelEntry, FuelLog, defaultFuelLog } from './FuelLog';
 
 interface FuelLogModalReducerState {
@@ -38,9 +37,6 @@ type FuelLogModalReducerAction =
 	| {
 			type: 'REMOVE_ENTRY';
 			payload: number;
-	  }
-	| {
-			type: 'SAVE_FUEL_LOG';
 	  };
 
 export function FuelLogModalReducer(
@@ -110,12 +106,6 @@ export function FuelLogModalReducer(
 						(_, index) => index !== action.payload
 					)
 				}
-			};
-		case 'SAVE_FUEL_LOG':
-			saveFuelLog(state.fuelLog);
-			return {
-				...state,
-				isModalOpen: false
 			};
 		default:
 			return state;

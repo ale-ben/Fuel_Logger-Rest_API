@@ -2,6 +2,7 @@
 
 import { FuelLogModalContext } from '@/app/context/FuelLogModalContext';
 import { FuelEntry, defaultFuelEntry, defaultFuelLog } from '@/models/FuelLog';
+import { saveFuelLog } from '@/serverActions/FuelLogStorage';
 import { RevalidatePath } from '@/serverActions/genericActions';
 import { Accordion, AccordionItem } from '@nextui-org/accordion';
 import { Button } from '@nextui-org/button';
@@ -200,7 +201,8 @@ const EditLogModal = () => {
 					<Button
 						color="primary"
 						onClick={() => {
-							dispatch({ type: 'SAVE_FUEL_LOG' }); // Also closes the modal
+							saveFuelLog(state.fuelLog);
+							dispatch({ type: 'CLOSE_MODAL' });
 							RevalidatePath(path);
 						}}
 					>

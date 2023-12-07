@@ -12,10 +12,12 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
+		"@changesets/cli": "^2.27.1",
 		"@nextui-org/react": "^2.2.9",
 		"deta": "^2.0.0",
 		"framer-motion": "^10.16.15",
 		"next": "14.0.3",
+		"next-auth": "^4.24.5",
 		"next-themes": "^0.2.1",
 		"react": "^18",
 		"react-dom": "^18",
@@ -41,7 +43,7 @@
 		"typescript": "^5"
 	},
 	"lint-staged": {
-		"*.{js,css,md, ts, tsx, jsx}": [
+		"*.{js,css,md,ts,tsx,jsx}": [
 			"eslint --fix",
 			"prettier --write"
 		]

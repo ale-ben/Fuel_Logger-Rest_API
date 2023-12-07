@@ -42,11 +42,18 @@ const Navbar1 = () => {
 			</NavbarContent>
 
 			<NavbarContent justify="end">
-				<NavbarItem>
-					<Link href="/api/auth/signout" type="P" color="foreground">
-						Sign out
-					</Link>
-				</NavbarItem>
+				{process.env.NODE_ENV == 'production' ? (
+					<NavbarItem>
+						<Link
+							href="/api/auth/signout"
+							color="foreground"
+						>
+							Sign out
+						</Link>
+					</NavbarItem>
+				) : (
+					<></>
+				)}
 				<NavbarItem>
 					<DarkModeToggle />
 				</NavbarItem>

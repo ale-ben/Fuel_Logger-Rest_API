@@ -8,45 +8,37 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"lint": "next lint",
 		"style": "prettier --write 'src/**/*.{ts,tsx}'",
-		"space dev": "space dev",
-		"space push": "space push --skip-logs"
+		"lint": "next lint"
 	},
 	"dependencies": {
 		"@nextui-org/react": "^2.2.9",
-		"@types/node": "20.10.0",
-		"@types/react": "18.2.38",
-		"@types/react-dom": "18.2.17",
-		"deta": "^2.0.0",
-		"encoding": "^0.1.13",
-		"framer-motion": "^10.16.5",
-		"next": "13.5.6",
+		"framer-motion": "^10.16.15",
+		"next": "14.0.3",
 		"next-themes": "^0.2.1",
-		"prettier-plugin-organize-imports": "^3.2.4",
-		"react": "18.2.0",
-		"react-dom": "18.2.0",
-		"react-icons": "^4.11.0",
-		"typescript": "5.3.2"
+		"react": "^18",
+		"react-dom": "^18"
 	},
 	"devDependencies": {
-		"autoprefixer": "^10.4.16",
-		"eslint": "8.54.0",
+		"@types/node": "^20",
+		"@types/react": "^18",
+		"@types/react-dom": "^18",
+		"autoprefixer": "^10.0.1",
+		"eslint": "^8",
 		"eslint-config-next": "14.0.3",
-		"eslint-config-prettier": "^9.0.0",
+		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-prettier": "^5.0.1",
 		"husky": "^8.0.3",
-		"lint-staged": "^15.0.2",
-		"postcss": "^8.4.31",
+		"lint-staged": "^15.2.0",
+		"postcss": "^8",
 		"prettier": "^3.1.0",
-		"prettier-plugin-tailwindcss": "^0.5.7",
-		"tailwindcss": "^3.3.5",
-		"ts-node": "^10.9.1"
+		"prettier-plugin-organize-imports": "^3.2.4",
+		"prettier-plugin-tailwindcss": "^0.5.9",
+		"tailwindcss": "^3.3.0",
+		"ts-node": "^10.9.1",
+		"typescript": "^5"
 	},
 	"lint-staged": {
-		"*.{js,css,md, ts, tsx, jsx}": "prettier --write"
-	},
-	"engines": {
-		"node": "16.16.0"
+		"*.{js,css,md, ts, tsx, jsx}": ["eslint --fix", "prettier --write"]
 	}
 }

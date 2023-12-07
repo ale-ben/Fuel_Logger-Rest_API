@@ -1,15 +1,17 @@
 'use client';
 
+import { FuelLogModalContext } from '@/app/context/FuelLogModalContext';
+import { defaultFuelLog } from '@/models/FuelLog';
 import { RevalidatePath } from '@/serverActions/genericActions';
 import { Button } from '@nextui-org/button';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useContext } from 'react';
 import { BiRefresh } from 'react-icons/bi';
 import { IoIosAdd } from 'react-icons/io';
-import NewLogModal from './newLogModal';
+import EditLogModal from './editLogModal';
 
 const TopBar = () => {
-	const [isOpen, setOpen] = useState(false);
+	const { state, dispatch } = useContext(FuelLogModalContext);
 	const path = usePathname();
 
 	return (
@@ -26,10 +28,18 @@ const TopBar = () => {
 				>
 					<BiRefresh className="text-3xl" />
 				</Button>
-				<Button isIconOnly onPress={() => setOpen(true)}>
+				<Button
+					isIconOnly
+					onPress={() =>
+						dispatch({
+							type: 'OPEN_MODAL',
+							payload: defaultFuelLog
+						})
+					}
+				>
 					<IoIosAdd className="text-3xl" />
 				</Button>
-				<NewLogModal isOpen={isOpen} setOpen={setOpen} />
+				<EditLogModal />
 			</div>
 		</div>
 	);

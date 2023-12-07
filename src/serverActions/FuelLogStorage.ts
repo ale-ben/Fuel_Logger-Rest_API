@@ -14,13 +14,17 @@ export async function getFuelLogs(): Promise<FuelLog[] | undefined> {
 	else return undefined;
 }
 
-export async function getFuelLog(id: number): Promise<FuelLog | undefined> {
-	const res = await fuelDB.get(id.toString());
+export async function getFuelLog(key: string): Promise<FuelLog | undefined> {
+	const res = await fuelDB.get(key);
 
 	if (res !== undefined && IsFuelLog(res)) return res as FuelLog;
 	else return undefined;
 }
 
-export async function createFuelLog(log: FuelLog): Promise<void> {
+export async function saveFuelLog(log: FuelLog): Promise<void> {
 	await fuelDB.put(log as unknown as ObjectType);
+}
+
+export async function deleteFuelLog(key: string): Promise<void> {
+	await fuelDB.delete(key);
 }

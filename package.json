@@ -1,6 +1,6 @@
 {
 	"name": "fuel_logger",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"private": true,
 	"scripts": {
 		"preinstall": "npx only-allow pnpm",
@@ -43,7 +43,7 @@
 		"typescript": "^5"
 	},
 	"lint-staged": {
-		"*.{js,css,md,ts,tsx,jsx}": [
+		"*.{js,css,ts,tsx,jsx}": [
 			"eslint --fix",
 			"prettier --write"
 		]

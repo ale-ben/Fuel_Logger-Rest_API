@@ -19,7 +19,7 @@ const SingleLogOptions = ({ log }: SingleLogOptionsProps) => {
 	const path = usePathname();
 
 	return (
-		<div className="flex flex-row justify-evenly w-full">
+		<div className="flex w-full flex-row justify-evenly">
 			<Button
 				isIconOnly
 				color="primary"

@@ -3,9 +3,21 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "prepare": "husky install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@fuel-logger/typescript-config": "workspace:^",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "husky": "^8.0.3",
+    "prettier": "^3.1.1",
+    "prettier-plugin-organize-imports": "^3.2.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
 }

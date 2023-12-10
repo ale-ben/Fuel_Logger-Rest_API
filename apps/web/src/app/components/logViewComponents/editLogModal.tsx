@@ -1,9 +1,13 @@
 'use client';
 
 import { FuelLogModalContext } from '@/app/context/FuelLogModalContext';
-import { FuelEntry, defaultFuelEntry, defaultFuelLog } from '@/models/FuelLog';
-import { saveFuelLog } from '@/serverActions/FuelLogStorage';
 import { RevalidatePath } from '@/serverActions/genericActions';
+import {
+	FuelEntry,
+	defaultFuelEntry,
+	defaultFuelLog,
+	saveFuelLog
+} from '@fuel-logger/dbutils';
 import { Accordion, AccordionItem } from '@nextui-org/accordion';
 import { Button } from '@nextui-org/button';
 import { Input } from '@nextui-org/input';

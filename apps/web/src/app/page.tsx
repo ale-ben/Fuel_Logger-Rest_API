@@ -1,4 +1,4 @@
-import { getFuelLogs } from '@/serverActions/FuelLogStorage';
+import { getFuelLogs } from '@fuel-logger/dbutils';
 import { ScrollShadow } from '@nextui-org/scroll-shadow';
 import SingleLog from './components/logViewComponents/singleLog';
 import TopBar from './components/logViewComponents/topBar';

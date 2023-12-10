@@ -1,4 +1,4 @@
-import { FuelEntry, FuelLog, defaultFuelLog } from './FuelLog';
+import { FuelEntry, FuelLog, defaultFuelLog } from '@fuel-logger/dbutils';
 
 interface FuelLogModalReducerState {
 	isModalOpen: boolean;

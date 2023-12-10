@@ -1,6 +1,6 @@
 'use server';
 
-import { FuelLog, IsFuelLog, IsFuelLogArray } from '@/models/FuelLog';
+import { FuelLog, IsFuelLog, IsFuelLogArray } from './FuelLog';
 import { Deta } from 'deta';
 import { ObjectType } from 'deta/dist/types/types/basic';
 

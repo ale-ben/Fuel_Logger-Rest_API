@@ -1,51 +1,24 @@
 {
-	"name": "fuel_logger",
+	"name": "fuel-logger",
 	"version": "1.0.0",
-	"private": true,
+	"description": "",
 	"scripts": {
-		"preinstall": "npx only-allow pnpm",
-		"prepare": "husky install",
-		"dev": "next dev",
-		"build": "next build",
-		"start": "next start",
-		"style": "prettier --write 'src/**/*.{ts,tsx}'",
-		"lint": "next lint"
+		"prepare": "husky install"
 	},
-	"dependencies": {
-		"@changesets/cli": "^2.27.1",
-		"@nextui-org/react": "^2.2.9",
-		"deta": "^2.0.0",
-		"framer-motion": "^10.16.15",
-		"next": "14.0.3",
-		"next-auth": "^4.24.5",
-		"next-themes": "^0.2.1",
-		"react": "^18",
-		"react-dom": "^18",
-		"react-icons": "^4.12.0"
-	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
 	"devDependencies": {
-		"@types/node": "^20",
-		"@types/react": "^18",
-		"@types/react-dom": "^18",
-		"autoprefixer": "^10.0.1",
-		"eslint": "^8",
-		"eslint-config-next": "14.0.3",
+		"@fuel-logger/typescript-config": "workspace:^",
+		"eslint": "^8.55.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-prettier": "^5.0.1",
 		"husky": "^8.0.3",
 		"lint-staged": "^15.2.0",
-		"postcss": "^8",
-		"prettier": "^3.1.0",
+		"nx": "17.2.0",
+		"prettier": "^3.1.1",
 		"prettier-plugin-organize-imports": "^3.2.4",
-		"prettier-plugin-tailwindcss": "^0.5.9",
-		"tailwindcss": "^3.3.0",
-		"ts-node": "^10.9.1",
-		"typescript": "^5"
-	},
-	"lint-staged": {
-		"*.{js,css,ts,tsx,jsx}": [
-			"eslint --fix",
-			"prettier --write"
-		]
+		"ts-node": "^10.9.2",
+		"typescript": "^5.3.3"
 	}
 }

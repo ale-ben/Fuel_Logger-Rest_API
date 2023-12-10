@@ -1,8 +1,8 @@
 'use client';
 
 import { FuelLogModalContext } from '@/app/context/FuelLogModalContext';
-import { defaultFuelLog } from '@/models/FuelLog';
 import { RevalidatePath } from '@/serverActions/genericActions';
+import { defaultFuelLog } from '@fuel-logger/dbutils';
 import { Button } from '@nextui-org/button';
 import { usePathname } from 'next/navigation';
 import { useContext } from 'react';

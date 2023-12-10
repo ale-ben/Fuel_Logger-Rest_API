@@ -1,4 +1,4 @@
-import { FuelLog, GetAmount, GetDate, GetPrice } from '@/models/FuelLog';
+import { FuelLog, GetAmount, GetDate, GetPrice } from '@fuel-logger/dbutils';
 import { Card, CardFooter, CardHeader } from '@nextui-org/card';
 import SingleLogOptions from './singleLogOptions';
 

@@ -2,13 +2,14 @@
 
 import {
 	FuelLogModalReducer,
+	FuelLogModalReducerAction,
 	defaultFuelLogModalState
 } from '@/models/FuelLogModalReducer';
 import { createContext, useReducer } from 'react';
 
 export const FuelLogModalContext = createContext({
 	state: defaultFuelLogModalState,
-	dispatch: (action: any) => {}
+	dispatch: (action: FuelLogModalReducerAction) => {}
 });
 
 export function FuelLogModalContextProvider({

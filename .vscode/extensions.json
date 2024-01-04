@@ -1,11 +1,7 @@
 {
 	"recommendations": [
-		"bradlc.vscode-tailwindcss",
-		"afzalsayed96.reacticons",
-		"ms-vscode.vscode-typescript-next",
-		"dbaeumer.vscode-eslint",
+		"folke.vscode-monorepo-workspace",
 		"esbenp.prettier-vscode",
-		"wallabyjs.console-ninja",
-		"chakrounanas.turbo-console-log"
+		"nrwl.angular-console"
 	]
 }

@@ -11,7 +11,7 @@ import { IoIosAdd } from 'react-icons/io';
 import EditLogModal from './editLogModal';
 
 const TopBar = () => {
-	const { state, dispatch } = useContext(FuelLogModalContext);
+	const { dispatch } = useContext(FuelLogModalContext);
 	const path = usePathname();
 
 	return (

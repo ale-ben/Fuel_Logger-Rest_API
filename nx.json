@@ -13,9 +13,6 @@
       "cache": true
     },
     "build": {
-      "outputs": [
-        "{projectRoot}/dist"
-      ],
       "cache": true
     }
   },

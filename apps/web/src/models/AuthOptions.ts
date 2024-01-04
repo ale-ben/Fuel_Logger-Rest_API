@@ -21,7 +21,7 @@ export const authOptions: NextAuthOptions = {
 					type: 'password'
 				}
 			},
-			async authorize(credentials, req) {
+			async authorize(credentials) {
 				// Add logic here to look up the user from the credentials supplied
 				const allowedUser = process.env.USER;
 				const allowedPW = process.env.PW;

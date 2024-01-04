@@ -1,4 +1,4 @@
-{
+export const baseConfig = {
 	"semi": true,
 	"trailingComma": "none",
 	"singleQuote": true,

@@ -10,7 +10,7 @@ export const defaultFuelLogModalState: FuelLogModalReducerState = {
 	fuelLog: defaultFuelLog
 };
 
-type FuelLogModalReducerAction =
+export type FuelLogModalReducerAction =
 	| {
 			type: 'OPEN_MODAL';
 			payload?: FuelLog;

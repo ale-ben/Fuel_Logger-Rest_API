@@ -2,23 +2,24 @@
 	"name": "fuel-logger",
 	"version": "1.0.0",
 	"description": "",
+	"type": "module",
+	"private": true,
 	"scripts": {
-		"prepare": "husky install"
+		"graph": "nx graph"
 	},
 	"keywords": [],
 	"author": "",
-	"license": "ISC",
+	"license": "GPL-3.0-or-later",
+	"dependencies": {
+		"@changesets/cli": "^2.27.1"
+	},
 	"devDependencies": {
-		"@fuel-logger/typescript-config": "workspace:^",
+		"@fuel-logger/config-prettier": "workspace:^",
+		"@fuel-logger/config-typescript": "workspace:^",
+		"@typescript-eslint/parser": "^6.15.0",
 		"eslint": "^8.56.0",
-		"eslint-config-prettier": "^9.1.0",
-		"eslint-plugin-prettier": "^5.1.2",
-		"husky": "^8.0.3",
-		"lint-staged": "^15.2.0",
-		"nx": "17.2.7",
+		"nx": "^17.2.8",
 		"prettier": "^3.1.1",
-		"prettier-plugin-organize-imports": "^3.2.4",
-		"ts-node": "^10.9.2",
-		"typescript": "^5.3.3"
+		"prettier-plugin-organize-imports": "^3.2.4"
 	}
 }

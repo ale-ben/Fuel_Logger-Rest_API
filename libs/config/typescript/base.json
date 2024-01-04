@@ -1,0 +1,22 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"display": "Default",
+	"compilerOptions": {
+			"strict": true,
+			"module": "ESNext",
+			"target": "ES2020",
+			"esModuleInterop": true,
+			"noEmitOnError": true,
+			"typeRoots": ["node_modules/@types"],
+			"moduleDetection": "force",
+			"moduleResolution": "node",
+			"skipLibCheck": true,
+			"resolveJsonModule": true,
+			"isolatedModules": true,
+			"declaration":true,
+			"declarationMap": true
+	},
+	"exclude": [
+		"node_modules"
+	]
+}

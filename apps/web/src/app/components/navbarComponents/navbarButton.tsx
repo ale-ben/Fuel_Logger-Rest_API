@@ -1,7 +1,6 @@
 'use client';
 
-import { Link } from '@nextui-org/link';
-import { NavbarItem } from '@nextui-org/navbar';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 interface NavbarButtonProps {
@@ -11,18 +10,18 @@ interface NavbarButtonProps {
 const NavbarButton = ({ href, text }: NavbarButtonProps) => {
 	const pathname = usePathname();
 
+	const activeClass =
+		'text-sm font-medium transition-colors hover:text-primary';
+	const nonActiveClass =
+		'text-sm font-medium text-muted-foreground transition-colors hover:text-primary';
+
 	return (
-		<NavbarItem isActive={pathname === href}>
-			{pathname === href ? (
-				<Link href={href} aria-current="page">
-					{text}
-				</Link>
-			) : (
-				<Link href={href} color="foreground">
-					{text}
-				</Link>
-			)}
-		</NavbarItem>
+		<Link
+			href={href}
+			className={href === pathname ? activeClass : nonActiveClass}
+		>
+			{text}
+		</Link>
 	);
 };
 

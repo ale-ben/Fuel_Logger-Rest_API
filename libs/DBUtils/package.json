@@ -1,0 +1,22 @@
+{
+	"name": "@fuel-logger/dbutils",
+	"main": "dist/index.js",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "pnpm clean && tsc",
+		"clean": "rimraf dist",
+		"style": "prettier --write 'src/**/*.{ts,tsx}'",
+		"lint": "eslint . --ext .ts"
+	},
+	"dependencies": {
+		"deta": "^2.0.0"
+	},
+	"devDependencies": {
+		"@fuel-logger/config-typescript": "workspace:*",
+		"react": "^18",
+		"typescript": "^5.3.3",
+		"rimraf": "^5.0.5"
+	}
+}

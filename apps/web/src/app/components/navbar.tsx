@@ -30,7 +30,7 @@ const Navbar = () => {
 
 					<div
 						className={cn(
-							'flex items-center space-x-4 lg:space-x-6 mx-6'
+							'mx-6 flex items-center space-x-4 lg:space-x-6'
 						)}
 					>
 						{navbarElems.map((item, index) => (
@@ -41,6 +41,7 @@ const Navbar = () => {
 							/>
 						))}
 					</div>
+
 					<div className="ml-auto flex items-center space-x-4">
 						{process.env.NODE_ENV == 'production' ? (
 							<Link href="/api/auth/signout" color="foreground">

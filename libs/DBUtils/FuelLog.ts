@@ -69,6 +69,934 @@ export const DummyLogs: FuelLog[] = [
 	}
 ];
 
+export const LongDummyLogs: FuelLog[] = [
+	{
+		odometer: 561.1,
+		entries: [
+			{
+				date: new Date('2023-06-24').getTime(),
+				amount: 33.19,
+				price: 60.37
+			}
+		]
+	},
+	{
+		odometer: 572.7,
+		entries: [
+			{
+				date: new Date('2023-07-21').getTime(),
+				amount: 32.84,
+				price: 60.72
+			},
+			{
+				date: new Date('2023-07-23').getTime(),
+				amount: 12.84,
+				price: 22.72
+			}
+		]
+	},
+	{
+		odometer: 523.1,
+		entries: [
+			{
+				date: new Date('2023-08-27').getTime(),
+				amount: 33.42,
+				price: 63.46
+			}
+		]
+	},
+	{
+		odometer: -1,
+		entries: [
+			{
+				date: new Date('2023-09-08').getTime(),
+				amount: 12.05,
+				price: 23.24
+			}
+		]
+	},
+	{
+		odometer: 561.1,
+		entries: [
+			{
+				date: new Date('2023-06-24').getTime(),
+				amount: 33.19,
+				price: 60.37
+			}
+		]
+	},
+	{
+		odometer: 572.7,
+		entries: [
+			{
+				date: new Date('2023-07-21').getTime(),
+				amount: 32.84,
+				price: 60.72
+			},
+			{
+				date: new Date('2023-07-23').getTime(),
+				amount: 12.84,
+				price: 22.72
+			}
+		]
+	},
+	{
+		odometer: 523.1,
+		entries: [
+			{
+				date: new Date('2023-08-27').getTime(),
+				amount: 33.42,
+				price: 63.46
+			}
+		]
+	},
+	{
+		odometer: -1,
+		entries: [
+			{
+				date: new Date('2023-09-08').getTime(),
+				amount: 12.05,
+				price: 23.24
+			}
+		]
+	},
+	{
+		odometer: 561.1,
+		entries: [
+			{
+				date: new Date('2023-06-24').getTime(),
+				amount: 33.19,
+				price: 60.37
+			}
+		]
+	},
+	{
+		odometer: 572.7,
+		entries: [
+			{
+				date: new Date('2023-07-21').getTime(),
+				amount: 32.84,
+				price: 60.72
+			},
+			{
+				date: new Date('2023-07-23').getTime(),
+				amount: 12.84,
+				price: 22.72
+			}
+		]
+	},
+	{
+		odometer: 523.1,
+		entries: [
+			{
+				date: new Date('2023-08-27').getTime(),
+				amount: 33.42,
+				price: 63.46
+			}
+		]
+	},
+	{
+		odometer: -1,
+		entries: [
+			{
+				date: new Date('2023-09-08').getTime(),
+				amount: 12.05,
+				price: 23.24
+			}
+		]
+	},
+	{
+		odometer: 561.1,
+		entries: [
+			{
+				date: new Date('2023-06-24').getTime(),
+				amount: 33.19,
+				price: 60.37
+			}
+		]
+	},
+	{
+		odometer: 572.7,
+		entries: [
+			{
+				date: new Date('2023-07-21').getTime(),
+				amount: 32.84,
+				price: 60.72
+			},
+			{
+				date: new Date('2023-07-23').getTime(),
+				amount: 12.84,
+				price: 22.72
+			}
+		]
+	},
+	{
+		odometer: 523.1,
+		entries: [
+			{
+				date: new Date('2023-08-27').getTime(),
+				amount: 33.42,
+				price: 63.46
+			}
+		]
+	},
+	{
+		odometer: -1,
+		entries: [
+			{
+				date: new Date('2023-09-08').getTime(),
+				amount: 12.05,
+				price: 23.24
+			}
+		]
+	},
+	{
+		odometer: 561.1,
+		entries: [
+			{
+				date: new Date('2023-06-24').getTime(),
+				amount: 33.19,
+				price: 60.37
+			}
+		]
+	},
+	{
+		odometer: 572.7,
+		entries: [
+			{
+				date: new Date('2023-07-21').getTime(),
+				amount: 32.84,
+				price: 60.72
+			},
+			{
+				date: new Date('2023-07-23').getTime(),
+				amount: 12.84,
+				price: 22.72
+			}
+		]
+	},
+	{
+		odometer: 523.1,
+		entries: [
+			{
+				date: new Date('2023-08-27').getTime(),
+				amount: 33.42,
+				price: 63.46
+			}
+		]
+	},
+	{
+		odometer: -1,
+		entries: [
+			{
+				date: new Date('2023-09-08').getTime(),
+				amount: 12.05,
+				price: 23.24
+			}
+		]
+	},
+	{
+		odometer: 561.1,
+		entries: [
+			{
+				date: new Date('2023-06-24').getTime(),
+				amount: 33.19,
+				price: 60.37
+			}
+		]
+	},
+	{
+		odometer: 572.7,
+		entries: [
+			{
+				date: new Date('2023-07-21').getTime(),
+				amount: 32.84,
+				price: 60.72
+			},
+			{
+				date: new Date('2023-07-23').getTime(),
+				amount: 12.84,
+				price: 22.72
+			}
+		]
+	},
+	{
+		odometer: 523.1,
+		entries: [
+			{
+				date: new Date('2023-08-27').getTime(),
+				amount: 33.42,
+				price: 63.46
+			}
+		]
+	},
+	{
+		odometer: -1,
+		entries: [
+			{
+				date: new Date('2023-09-08').getTime(),
+				amount: 12.05,
+				price: 23.24
+			}
+		]
+	},
+	{
+		odometer: 561.1,
+		entries: [
+			{
+				date: new Date('2023-06-24').getTime(),
+				amount: 33.19,
+				price: 60.37
+			}
+		]
+	},
+	{
+		odometer: 572.7,
+		entries: [
+			{
+				date: new Date('2023-07-21').getTime(),
+				amount: 32.84,
+				price: 60.72
+			},
+			{
+				date: new Date('2023-07-23').getTime(),
+				amount: 12.84,
+				price: 22.72
+			}
+		]
+	},
+	{
+		odometer: 523.1,
+		entries: [
+			{
+				date: new Date('2023-08-27').getTime(),
+				amount: 33.42,
+				price: 63.46
+			}
+		]
+	},
+	{
+		odometer: 561.1,
+		entries: [
+			{
+				date: new Date('2023-06-24').getTime(),
+				amount: 33.19,
+				price: 60.37
+			}
+		]
+	},
+	{
+		odometer: 572.7,
+		entries: [
+			{
+				date: new Date('2023-07-21').getTime(),
+				amount: 32.84,
+				price: 60.72
+			},
+			{
+				date: new Date('2023-07-23').getTime(),
+				amount: 12.84,
+				price: 22.72
+			}
+		]
+	},
+	{
+		odometer: 523.1,
+		entries: [
+			{
+				date: new Date('2023-08-27').getTime(),
+				amount: 33.42,
+				price: 63.46
+			}
+		]
+	},
+	{
+		odometer: -1,
+		entries: [
+			{
+				date: new Date('2023-09-08').getTime(),
+				amount: 12.05,
+				price: 23.24
+			}
+		]
+	},
+	{
+		odometer: 561.1,
+		entries: [
+			{
+				date: new Date('2023-06-24').getTime(),
+				amount: 33.19,
+				price: 60.37
+			}
+		]
+	},
+	{
+		odometer: 572.7,
+		entries: [
+			{
+				date: new Date('2023-07-21').getTime(),
+				amount: 32.84,
+				price: 60.72
+			},
+			{
+				date: new Date('2023-07-23').getTime(),
+				amount: 12.84,
+				price: 22.72
+			}
+		]
+	},
+	{
+		odometer: 523.1,
+		entries: [
+			{
+				date: new Date('2023-08-27').getTime(),
+				amount: 33.42,
+				price: 63.46
+			}
+		]
+	},
+	{
+		odometer: -1,
+		entries: [
+			{
+				date: new Date('2023-09-08').getTime(),
+				amount: 12.05,
+				price: 23.24
+			}
+		]
+	},
+	{
+		odometer: 561.1,
+		entries: [
+			{
+				date: new Date('2023-06-24').getTime(),
+				amount: 33.19,
+				price: 60.37
+			}
+		]
+	},
+	{
+		odometer: 572.7,
+		entries: [
+			{
+				date: new Date('2023-07-21').getTime(),
+				amount: 32.84,
+				price: 60.72
+			},
+			{
+				date: new Date('2023-07-23').getTime(),
+				amount: 12.84,
+				price: 22.72
+			}
+		]
+	},
+	{
+		odometer: 523.1,
+		entries: [
+			{
+				date: new Date('2023-08-27').getTime(),
+				amount: 33.42,
+				price: 63.46
+			}
+		]
+	},
+	{
+		odometer: -1,
+		entries: [
+			{
+				date: new Date('2023-09-08').getTime(),
+				amount: 12.05,
+				price: 23.24
+			}
+		]
+	},
+	{
+		odometer: 561.1,
+		entries: [
+			{
+				date: new Date('2023-06-24').getTime(),
+				amount: 33.19,
+				price: 60.37
+			}
+		]
+	},
+	{
+		odometer: 572.7,
+		entries: [
+			{
+				date: new Date('2023-07-21').getTime(),
+				amount: 32.84,
+				price: 60.72
+			},
+			{
+				date: new Date('2023-07-23').getTime(),
+				amount: 12.84,
+				price: 22.72
+			}
+		]
+	},
+	{
+		odometer: 523.1,
+		entries: [
+			{
+				date: new Date('2023-08-27').getTime(),
+				amount: 33.42,
+				price: 63.46
+			}
+		]
+	},
+	{
+		odometer: -1,
+		entries: [
+			{
+				date: new Date('2023-09-08').getTime(),
+				amount: 12.05,
+				price: 23.24
+			}
+		]
+	},
+	{
+		odometer: 561.1,
+		entries: [
+			{
+				date: new Date('2023-06-24').getTime(),
+				amount: 33.19,
+				price: 60.37
+			}
+		]
+	},
+	{
+		odometer: 572.7,
+		entries: [
+			{
+				date: new Date('2023-07-21').getTime(),
+				amount: 32.84,
+				price: 60.72
+			},
+			{
+				date: new Date('2023-07-23').getTime(),
+				amount: 12.84,
+				price: 22.72
+			}
+		]
+	},
+	{
+		odometer: 523.1,
+		entries: [
+			{
+				date: new Date('2023-08-27').getTime(),
+				amount: 33.42,
+				price: 63.46
+			}
+		]
+	},
+	{
+		odometer: -1,
+		entries: [
+			{
+				date: new Date('2023-09-08').getTime(),
+				amount: 12.05,
+				price: 23.24
+			}
+		]
+	},
+	{
+		odometer: 561.1,
+		entries: [
+			{
+				date: new Date('2023-06-24').getTime(),
+				amount: 33.19,
+				price: 60.37
+			}
+		]
+	},
+	{
+		odometer: 572.7,
+		entries: [
+			{
+				date: new Date('2023-07-21').getTime(),
+				amount: 32.84,
+				price: 60.72
+			},
+			{
+				date: new Date('2023-07-23').getTime(),
+				amount: 12.84,
+				price: 22.72
+			}
+		]
+	},
+	{
+		odometer: 523.1,
+		entries: [
+			{
+				date: new Date('2023-08-27').getTime(),
+				amount: 33.42,
+				price: 63.46
+			}
+		]
+	},
+	{
+		odometer: -1,
+		entries: [
+			{
+				date: new Date('2023-09-08').getTime(),
+				amount: 12.05,
+				price: 23.24
+			}
+		]
+	},
+	{
+		odometer: 561.1,
+		entries: [
+			{
+				date: new Date('2023-06-24').getTime(),
+				amount: 33.19,
+				price: 60.37
+			}
+		]
+	},
+	{
+		odometer: 572.7,
+		entries: [
+			{
+				date: new Date('2023-07-21').getTime(),
+				amount: 32.84,
+				price: 60.72
+			},
+			{
+				date: new Date('2023-07-23').getTime(),
+				amount: 12.84,
+				price: 22.72
+			}
+		]
+	},
+	{
+		odometer: 523.1,
+		entries: [
+			{
+				date: new Date('2023-08-27').getTime(),
+				amount: 33.42,
+				price: 63.46
+			}
+		]
+	},
+	{
+		odometer: 561.1,
+		entries: [
+			{
+				date: new Date('2023-06-24').getTime(),
+				amount: 33.19,
+				price: 60.37
+			}
+		]
+	},
+	{
+		odometer: 572.7,
+		entries: [
+			{
+				date: new Date('2023-07-21').getTime(),
+				amount: 32.84,
+				price: 60.72
+			},
+			{
+				date: new Date('2023-07-23').getTime(),
+				amount: 12.84,
+				price: 22.72
+			}
+		]
+	},
+	{
+		odometer: 523.1,
+		entries: [
+			{
+				date: new Date('2023-08-27').getTime(),
+				amount: 33.42,
+				price: 63.46
+			}
+		]
+	},
+	{
+		odometer: -1,
+		entries: [
+			{
+				date: new Date('2023-09-08').getTime(),
+				amount: 12.05,
+				price: 23.24
+			}
+		]
+	},
+	{
+		odometer: 561.1,
+		entries: [
+			{
+				date: new Date('2023-06-24').getTime(),
+				amount: 33.19,
+				price: 60.37
+			}
+		]
+	},
+	{
+		odometer: 572.7,
+		entries: [
+			{
+				date: new Date('2023-07-21').getTime(),
+				amount: 32.84,
+				price: 60.72
+			},
+			{
+				date: new Date('2023-07-23').getTime(),
+				amount: 12.84,
+				price: 22.72
+			}
+		]
+	},
+	{
+		odometer: 523.1,
+		entries: [
+			{
+				date: new Date('2023-08-27').getTime(),
+				amount: 33.42,
+				price: 63.46
+			}
+		]
+	},
+	{
+		odometer: -1,
+		entries: [
+			{
+				date: new Date('2023-09-08').getTime(),
+				amount: 12.05,
+				price: 23.24
+			}
+		]
+	},
+	{
+		odometer: 561.1,
+		entries: [
+			{
+				date: new Date('2023-06-24').getTime(),
+				amount: 33.19,
+				price: 60.37
+			}
+		]
+	},
+	{
+		odometer: 572.7,
+		entries: [
+			{
+				date: new Date('2023-07-21').getTime(),
+				amount: 32.84,
+				price: 60.72
+			},
+			{
+				date: new Date('2023-07-23').getTime(),
+				amount: 12.84,
+				price: 22.72
+			}
+		]
+	},
+	{
+		odometer: 523.1,
+		entries: [
+			{
+				date: new Date('2023-08-27').getTime(),
+				amount: 33.42,
+				price: 63.46
+			}
+		]
+	},
+	{
+		odometer: -1,
+		entries: [
+			{
+				date: new Date('2023-09-08').getTime(),
+				amount: 12.05,
+				price: 23.24
+			}
+		]
+	},
+	{
+		odometer: 561.1,
+		entries: [
+			{
+				date: new Date('2023-06-24').getTime(),
+				amount: 33.19,
+				price: 60.37
+			}
+		]
+	},
+	{
+		odometer: 572.7,
+		entries: [
+			{
+				date: new Date('2023-07-21').getTime(),
+				amount: 32.84,
+				price: 60.72
+			},
+			{
+				date: new Date('2023-07-23').getTime(),
+				amount: 12.84,
+				price: 22.72
+			}
+		]
+	},
+	{
+		odometer: 523.1,
+		entries: [
+			{
+				date: new Date('2023-08-27').getTime(),
+				amount: 33.42,
+				price: 63.46
+			}
+		]
+	},
+	{
+		odometer: -1,
+		entries: [
+			{
+				date: new Date('2023-09-08').getTime(),
+				amount: 12.05,
+				price: 23.24
+			}
+		]
+	},
+	{
+		odometer: 561.1,
+		entries: [
+			{
+				date: new Date('2023-06-24').getTime(),
+				amount: 33.19,
+				price: 60.37
+			}
+		]
+	},
+	{
+		odometer: 572.7,
+		entries: [
+			{
+				date: new Date('2023-07-21').getTime(),
+				amount: 32.84,
+				price: 60.72
+			},
+			{
+				date: new Date('2023-07-23').getTime(),
+				amount: 12.84,
+				price: 22.72
+			}
+		]
+	},
+	{
+		odometer: 523.1,
+		entries: [
+			{
+				date: new Date('2023-08-27').getTime(),
+				amount: 33.42,
+				price: 63.46
+			}
+		]
+	},
+	{
+		odometer: -1,
+		entries: [
+			{
+				date: new Date('2023-09-08').getTime(),
+				amount: 12.05,
+				price: 23.24
+			}
+		]
+	},
+	{
+		odometer: 561.1,
+		entries: [
+			{
+				date: new Date('2023-06-24').getTime(),
+				amount: 33.19,
+				price: 60.37
+			}
+		]
+	},
+	{
+		odometer: 572.7,
+		entries: [
+			{
+				date: new Date('2023-07-21').getTime(),
+				amount: 32.84,
+				price: 60.72
+			},
+			{
+				date: new Date('2023-07-23').getTime(),
+				amount: 12.84,
+				price: 22.72
+			}
+		]
+	},
+	{
+		odometer: 523.1,
+		entries: [
+			{
+				date: new Date('2023-08-27').getTime(),
+				amount: 33.42,
+				price: 63.46
+			}
+		]
+	},
+	{
+		odometer: -1,
+		entries: [
+			{
+				date: new Date('2023-09-08').getTime(),
+				amount: 12.05,
+				price: 23.24
+			}
+		]
+	},
+	{
+		odometer: 561.1,
+		entries: [
+			{
+				date: new Date('2023-06-24').getTime(),
+				amount: 33.19,
+				price: 60.37
+			}
+		]
+	},
+	{
+		odometer: 572.7,
+		entries: [
+			{
+				date: new Date('2023-07-21').getTime(),
+				amount: 32.84,
+				price: 60.72
+			},
+			{
+				date: new Date('2023-07-23').getTime(),
+				amount: 12.84,
+				price: 22.72
+			}
+		]
+	},
+	{
+		odometer: 523.1,
+		entries: [
+			{
+				date: new Date('2023-08-27').getTime(),
+				amount: 33.42,
+				price: 63.46
+			}
+		]
+	},
+	{
+		odometer: -1,
+		entries: [
+			{
+				date: new Date('2023-09-08').getTime(),
+				amount: 12.05,
+				price: 23.24
+			}
+		]
+	}
+];
+
 export function GetDate(log: FuelLog): Date {
 	return new Date(log.entries[0].date);
 }

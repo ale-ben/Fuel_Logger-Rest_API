@@ -1,17 +1,17 @@
-import { getFuelLogs } from '@fuel-logger/dbutils';
-import { ScrollShadow } from '@nextui-org/scroll-shadow';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { LongDummyLogs } from '@fuel-logger/dbutils';
 import SingleLog from './components/logViewComponents/singleLog';
 import TopBar from './components/logViewComponents/topBar';
 
 export default async function LogView() {
-	const logs = await getFuelLogs();
+	const logs = LongDummyLogs;
 
 	return (
-		<div className="flex flex-col">
+		<div className="flex h-full flex-col">
 			<div className="text-center text-2xl">Fuel Logs</div>
-			<div className="m-5">
+			<div className="m-5 grow">
 				<TopBar />
-				<ScrollShadow className="mt-5 h-[500px] w-full">
+				<ScrollArea className="mt-5 h-[550px] w-full">
 					<div className="flex flex-row flex-wrap justify-evenly gap-2 px-3">
 						{logs ? (
 							logs.map((log, index) => (
@@ -21,7 +21,7 @@ export default async function LogView() {
 							<p className="text-xl">No log found</p>
 						)}
 					</div>
-				</ScrollShadow>
+				</ScrollArea>
 			</div>
 		</div>
 	);

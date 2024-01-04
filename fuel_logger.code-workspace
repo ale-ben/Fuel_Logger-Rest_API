@@ -3,6 +3,10 @@
 		{
 			"name": "🚀 web",
 			"path": "apps/web"
+		},
+		{
+			"name": "📦 @fuel-logger/dbutils",
+			"path": "libs/DBUtils"
 		}
 	],
 	"settings": {}

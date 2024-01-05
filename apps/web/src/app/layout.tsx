@@ -7,6 +7,7 @@ import { Inter as FontSans } from 'next/font/google';
 import { redirect } from 'next/navigation';
 import './globals.css';
 import { Providers } from './providers';
+import Footer from '@/components/footer/footer';
 
 export const metadata: Metadata = {
 	title: 'Fuel Logger',
@@ -42,6 +43,7 @@ export default async function RootLayout({
 					<div className="flex h-screen w-screen flex-col gap-5">
 						<Navbar />
 						{children}
+						<Footer />
 					</div>
 				</Providers>
 			</body>

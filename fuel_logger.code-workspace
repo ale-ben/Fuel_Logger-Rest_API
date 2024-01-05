@@ -1,12 +1,8 @@
 {
 	"folders": [
 		{
-			"name": "🚀 web",
-			"path": "apps/web"
-		},
-		{
-			"name": "📦 @fuel-logger/dbutils",
-			"path": "libs/DBUtils"
+			"name": "✨ fuel-logger",
+			"path": "."
 		}
 	],
 	"settings": {}

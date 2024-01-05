@@ -1,8 +1,8 @@
 'use server';
 
-import { FuelLog, IsFuelLog, IsFuelLogArray } from './FuelLog';
 import { Deta } from 'deta';
 import { ObjectType } from 'deta/dist/types/types/basic';
+import { FuelLog, IsFuelLog, IsFuelLogArray } from './FuelLog';
 
 const deta = Deta();
 const fuelDB = deta.Base('fuel');

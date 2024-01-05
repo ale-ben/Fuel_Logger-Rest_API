@@ -1,3 +1,3 @@
-import { baseConfig } from '@teal-owl/config-prettier/base.mjs';
+import { baseConfig } from '@fuel-logger/config-prettier/base.mjs';
 
 export default baseConfig;

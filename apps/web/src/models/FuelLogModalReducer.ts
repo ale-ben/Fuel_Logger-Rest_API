@@ -10,7 +10,7 @@ export const defaultFuelLogModalState: FuelLogModalReducerState = {
 	fuelLog: defaultFuelLog
 };
 
-type FuelLogModalReducerAction =
+export type FuelLogModalReducerAction =
 	| {
 			type: 'OPEN_MODAL';
 			payload?: FuelLog;
@@ -80,7 +80,7 @@ export function FuelLogModalReducer(
 				...state,
 				fuelLog: {
 					...state.fuelLog,
-					entries: [...state.fuelLog.entries, action.payload]
+					entries: [action.payload, ...state.fuelLog.entries]
 				}
 			};
 		case 'UPDATE_ENTRY':

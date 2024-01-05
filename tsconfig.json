@@ -1,3 +1,3 @@
 {
-	"extends": "@fuel-logger/typescript-config/base.json",
+	"extends": "@fuel-logger/config-typescript/base.json",
 }

@@ -1,25 +1,27 @@
 {
-  "targetDefaults": {
-    "style": {
-      "dependsOn": [
-        "^style"
-      ],
-      "cache": true
-    },
-    "lint": {
-      "dependsOn": [
-        "^lint"
-      ],
-      "cache": true
-    },
-    "build": {
-      "outputs": [
-        "{projectRoot}/dist"
-      ],
-      "cache": true
-    }
-  },
-  "affected": {
-    "defaultBase": "develop"
-  }
+	"targetDefaults": {
+		"style": {
+			"dependsOn": [
+				"^style"
+			],
+			"cache": true
+		},
+		"lint": {
+			"dependsOn": [
+				"^lint",
+				"style"
+			],
+			"cache": true
+		},
+		"build": {
+			"dependsOn": [
+				"style",
+				"^build"
+			],
+			"cache": true
+		}
+	},
+	"affected": {
+		"defaultBase": "develop"
+	}
 }

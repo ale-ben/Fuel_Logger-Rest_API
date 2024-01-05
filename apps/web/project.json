@@ -1,0 +1,31 @@
+{
+	"name": "web",
+	"$schema": "../../node_modules/nx/schemas/project-schema.json",
+	"targets": {
+		"build": {
+			"dependsOn": [
+				{
+					"projects": [
+						"@fuel-logger/dbutils"
+					],
+					"target": "build"
+				}
+			],
+			"cache": true,
+			"outputs": [
+				"{projectRoot}/.next"
+			]
+		},
+		"dev": {
+			"dependsOn": [
+				{
+					"projects": [
+						"@fuel-logger/dbutils"
+					],
+					"target": "build"
+				}
+			],
+			"cache": false
+		}
+	}
+}

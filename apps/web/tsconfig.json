@@ -1,19 +1,6 @@
 {
-  "extends": "@fuel-logger/typescript-config/base.json",
+  "extends": "@fuel-logger/config-typescript/next.json",
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "target": "es5",
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
     "paths": {
       "@/*": [
         "./src/*"

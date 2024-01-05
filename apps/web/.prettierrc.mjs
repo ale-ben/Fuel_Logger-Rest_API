@@ -1,6 +1,4 @@
-import baseConfig from '@fuel-logger/prettier-config/base.json' assert {
-	type: 'json',
-};
+import {baseConfig} from '@fuel-logger/config-prettier/base.mjs' 
 
 export default {
 	...baseConfig,

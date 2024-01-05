@@ -11,7 +11,7 @@ export default function Footer() {
 			</a>
 			<a className="text-center">
 				Released under{' '}
-				<a className="italic">GNU GENERAL PUBLIC LICENSE version 3</a>
+				<i>GNU GENERAL PUBLIC LICENSE version 3</i>
 			</a>
 			<a className="mr-2 text-right">v{packageInfo.version}</a>
 		</p>

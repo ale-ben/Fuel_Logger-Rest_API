@@ -1,8 +1,10 @@
+import Navbar from '@/components/navbar/navbar';
+import { cn } from '@/lib/utils';
 import { authOptions } from '@/models/AuthOptions';
 import type { Metadata } from 'next';
 import { getServerSession } from 'next-auth';
+import { Inter as FontSans } from 'next/font/google';
 import { redirect } from 'next/navigation';
-import Navbar from './components/navbar';
 import './globals.css';
 import { Providers } from './providers';
 
@@ -10,6 +12,11 @@ export const metadata: Metadata = {
 	title: 'Fuel Logger',
 	description: 'Tool for tracking fuel consumption of a vehicle'
 };
+
+export const fontSans = FontSans({
+	subsets: ['latin'],
+	variable: '--font-sans'
+});
 
 export default async function RootLayout({
 	children
@@ -25,7 +32,12 @@ export default async function RootLayout({
 	}
 	return (
 		<html suppressHydrationWarning lang="en" className="dark">
-			<body>
+			<body
+				className={cn(
+					'h-screen bg-background font-sans antialiased',
+					fontSans.variable
+				)}
+			>
 				<Providers>
 					<div className="flex h-screen w-screen flex-col gap-5">
 						<Navbar />

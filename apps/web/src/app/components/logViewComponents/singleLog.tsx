@@ -1,5 +1,11 @@
+import {
+	Card,
+	CardContent,
+	CardFooter,
+	CardHeader,
+	CardTitle
+} from '@/components/ui/card';
 import { FuelLog, GetAmount, GetDate, GetPrice } from '@fuel-logger/dbutils';
-import { Card, CardFooter, CardHeader } from '@nextui-org/card';
 import SingleLogOptions from './singleLogOptions';
 
 interface SingleLogProps {
@@ -8,28 +14,30 @@ interface SingleLogProps {
 
 const SingleLog = ({ log }: SingleLogProps) => {
 	return (
-		<Card className="w-40">
+		<Card className="w-45">
 			<CardHeader className="flex justify-center">
-				{GetDate(log).toDateString()}
+				<CardTitle>{GetDate(log).toDateString()}</CardTitle>
 			</CardHeader>
-			<div className="flex flex-col px-3 pb-3">
-				<div className="flex flex-row justify-evenly">
-					<p>Km</p>
-					<p>{log.odometer.toFixed(2)}</p>
+			<CardContent>
+				<div className="flex flex-col px-3 pb-3">
+					<div className="flex flex-row justify-evenly">
+						<p>Km</p>
+						<p>{log.odometer.toFixed(2)}</p>
+					</div>
+					<div className="flex flex-row justify-evenly">
+						<p>L</p>
+						<p>{GetAmount(log).toFixed(2)}</p>
+					</div>
+					<div className="flex flex-row justify-evenly">
+						<p>€</p>
+						<p>{GetPrice(log).toFixed(2)}</p>
+					</div>
+					<div className="flex flex-row justify-evenly">
+						<p>€/L</p>
+						<p>{(GetPrice(log) / GetAmount(log)).toFixed(2)}</p>
+					</div>
 				</div>
-				<div className="flex flex-row justify-evenly">
-					<p>L</p>
-					<p>{GetAmount(log).toFixed(2)}</p>
-				</div>
-				<div className="flex flex-row justify-evenly">
-					<p>€</p>
-					<p>{GetPrice(log).toFixed(2)}</p>
-				</div>
-				<div className="flex flex-row justify-evenly">
-					<p>€/L</p>
-					<p>{(GetPrice(log) / GetAmount(log)).toFixed(2)}</p>
-				</div>
-			</div>
+			</CardContent>
 			<CardFooter>
 				<SingleLogOptions log={log} />
 			</CardFooter>

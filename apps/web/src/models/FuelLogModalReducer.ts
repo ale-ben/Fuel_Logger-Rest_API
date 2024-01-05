@@ -80,7 +80,7 @@ export function FuelLogModalReducer(
 				...state,
 				fuelLog: {
 					...state.fuelLog,
-					entries: [...state.fuelLog.entries, action.payload]
+					entries: [action.payload, ...state.fuelLog.entries]
 				}
 			};
 		case 'UPDATE_ENTRY':

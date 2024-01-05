@@ -1,5 +1,5 @@
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { DummyLogs, getFuelLogs } from '@fuel-logger/dbutils';
+import { getFuelLogs } from '@fuel-logger/dbutils';
 import SingleLog from './components/logViewComponents/singleLog';
 import TopBar from './components/logViewComponents/topBar';
 

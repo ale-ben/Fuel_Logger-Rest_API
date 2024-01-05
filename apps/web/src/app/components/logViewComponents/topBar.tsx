@@ -1,13 +1,12 @@
 'use client';
 
-import { FuelLogModalContext } from '@/app/context/FuelLogModalContext';
+import { Button } from '@/components/ui/button';
+import { FuelLogModalContext } from '@/context/FuelLogModalContext';
 import { RevalidatePath } from '@/serverActions/genericActions';
 import { defaultFuelLog } from '@fuel-logger/dbutils';
-import { Button } from '@nextui-org/button';
 import { usePathname } from 'next/navigation';
 import { useContext } from 'react';
-import { BiRefresh } from 'react-icons/bi';
-import { IoIosAdd } from 'react-icons/io';
+import { LuPlus, LuRefreshCw } from 'react-icons/lu';
 import EditLogModal from './editLogModal';
 
 const TopBar = () => {
@@ -16,28 +15,29 @@ const TopBar = () => {
 
 	return (
 		<div className="flex flex-row justify-between">
-			<div>Filter</div>
-			<div>Search</div>
+			<div>Filter by date</div>
 			<div>
 				<Button
-					isIconOnly
+					variant="outline"
+					size="icon"
 					className="mr-2"
-					onPress={() => {
+					onClick={() => {
 						RevalidatePath(path);
 					}}
 				>
-					<BiRefresh className="text-3xl" />
+					<LuRefreshCw className="text-xl" />
 				</Button>
 				<Button
-					isIconOnly
-					onPress={() =>
+					variant="outline"
+					size="icon"
+					onClick={() =>
 						dispatch({
 							type: 'OPEN_MODAL',
 							payload: defaultFuelLog
 						})
 					}
 				>
-					<IoIosAdd className="text-3xl" />
+					<LuPlus className="text-xl" />
 				</Button>
 				<EditLogModal />
 			</div>

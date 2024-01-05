@@ -1,10 +1,10 @@
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { LongDummyLogs } from '@fuel-logger/dbutils';
+import { DummyLogs, getFuelLogs } from '@fuel-logger/dbutils';
 import SingleLog from './components/logViewComponents/singleLog';
 import TopBar from './components/logViewComponents/topBar';
 
 export default async function LogView() {
-	const logs = LongDummyLogs;
+	const logs = await getFuelLogs();
 
 	return (
 		<div className="flex h-full flex-col">

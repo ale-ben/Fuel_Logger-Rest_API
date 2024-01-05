@@ -1,13 +1,12 @@
 'use client';
 
-import { FuelLogModalContext } from '@/app/context/FuelLogModalContext';
+import { Button } from '@/components/ui/button';
+import { FuelLogModalContext } from '@/context/FuelLogModalContext';
 import { RevalidatePath } from '@/serverActions/genericActions';
 import { FuelLog, deleteFuelLog } from '@fuel-logger/dbutils';
-import { Button } from '@nextui-org/button';
 import { usePathname } from 'next/navigation';
 import { useContext } from 'react';
-import { BiEdit } from 'react-icons/bi';
-import { BsTrash } from 'react-icons/bs';
+import { LuPencil, LuTrash } from 'react-icons/lu';
 
 interface SingleLogOptionsProps {
 	log: FuelLog;
@@ -20,20 +19,18 @@ const SingleLogOptions = ({ log }: SingleLogOptionsProps) => {
 	return (
 		<div className="flex w-full flex-row justify-evenly">
 			<Button
-				isIconOnly
-				color="primary"
-				className="w-10"
-				onPress={() => {
+				variant="outline"
+				size="icon"
+				onClick={() => {
 					dispatch({ type: 'OPEN_MODAL', payload: log });
 				}}
 			>
-				<BiEdit className="text-xl" />
+				<LuPencil className="text-xl" />
 			</Button>
 			<Button
-				isIconOnly
-				color="danger"
-				className="w-10"
-				onPress={() => {
+				variant="destructive"
+				size="icon"
+				onClick={() => {
 					if (
 						log.key !== undefined &&
 						log.key !== null &&
@@ -44,7 +41,7 @@ const SingleLogOptions = ({ log }: SingleLogOptionsProps) => {
 					}
 				}}
 			>
-				<BsTrash className="text-xl" />
+				<LuTrash className="text-xl" />
 			</Button>
 		</div>
 	);

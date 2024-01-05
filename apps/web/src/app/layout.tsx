@@ -1,10 +1,10 @@
+import Navbar from '@/components/navbar/navbar';
 import { cn } from '@/lib/utils';
 import { authOptions } from '@/models/AuthOptions';
 import type { Metadata } from 'next';
 import { getServerSession } from 'next-auth';
 import { Inter as FontSans } from 'next/font/google';
 import { redirect } from 'next/navigation';
-import Navbar from './components/navbar';
 import './globals.css';
 import { Providers } from './providers';
 

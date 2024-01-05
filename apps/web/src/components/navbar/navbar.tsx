@@ -27,7 +27,13 @@ const Navbar = () => {
 				<div className="flex h-16 items-center px-4">
 					<LuFuel className="mr-2 text-xl" />
 					<a className="text-xl font-bold">Fuel Logger</a>
-
+					{process.env.NODE_ENV == 'production' ? (
+						<></>
+					) : (
+						<a className="ml-2 text-xl font-bold text-red-400">
+							DEV
+						</a>
+					)}
 					<div
 						className={cn(
 							'mx-6 flex items-center space-x-4 lg:space-x-6'

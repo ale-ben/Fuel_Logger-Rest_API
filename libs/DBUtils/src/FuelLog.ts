@@ -1,3 +1,5 @@
+import { z } from 'zod';
+
 export interface FuelEntry {
 	date: number;
 	amount: number;
@@ -1009,55 +1011,17 @@ export function GetPrice(log: FuelLog): number {
 	return log.entries.reduce((sum, entry) => sum + entry.price, 0);
 }
 
-// Type Guards
-function IsFuelEntry(obj: unknown): obj is FuelEntry {
-	const tmpObj = obj as FuelEntry;
+// Type parsing using zod
+export const zFuelEntry = z.object({
+	date: z.number(),
+	amount: z.number(),
+	price: z.number()
+});
 
-	if (tmpObj.date === undefined || typeof tmpObj.date !== 'number') {
-		return false;
-	}
+export const zFuelLog = z.object({
+	key: z.string().optional(),
+	odometer: z.number(),
+	entries: z.array(zFuelEntry)
+});
 
-	if (tmpObj.amount === undefined || typeof tmpObj.amount !== 'number') {
-		return false;
-	}
-
-	if (tmpObj.price === undefined || typeof tmpObj.price !== 'number') {
-		return false;
-	}
-
-	return true;
-}
-
-export function IsFuelLog(obj: unknown): obj is FuelLog {
-	const tmpObj = obj as FuelLog;
-
-	if (tmpObj.odometer === undefined || typeof tmpObj.odometer !== 'number') {
-		return false;
-	}
-
-	if (tmpObj.entries === undefined || !Array.isArray(tmpObj.entries)) {
-		return false;
-	}
-
-	tmpObj.entries.forEach((entry) => {
-		if (!IsFuelEntry(entry)) {
-			return false;
-		}
-	});
-
-	return true;
-}
-
-export function IsFuelLogArray(obj: unknown): obj is FuelLog[] {
-	if (!Array.isArray(obj)) {
-		return false;
-	}
-
-	obj.forEach((log) => {
-		if (!IsFuelLog(log)) {
-			return false;
-		}
-	});
-
-	return true;
-}
+export const zFuelLogArray = z.array(zFuelLog);

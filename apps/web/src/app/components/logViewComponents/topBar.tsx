@@ -4,9 +4,9 @@ import { Button } from '@/components/ui/button';
 import { FuelLogModalContext } from '@/context/FuelLogModalContext';
 import { RevalidatePath } from '@/serverActions/genericActions';
 import { defaultFuelLog } from '@fuel-logger/dbutils';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useContext, useState } from 'react';
-import { LuPlus, LuRefreshCw } from 'react-icons/lu';
+import { LuPlus, LuRefreshCw, LuX } from 'react-icons/lu';
 import EditLogModal from './editLogModal';
 
 import { Calendar } from '@/components/ui/calendar';
@@ -20,18 +20,34 @@ import { CalendarIcon } from '@radix-ui/react-icons';
 import { format } from 'date-fns';
 import { DateRange } from 'react-day-picker';
 
-const TopBar = () => {
+interface Props {
+	dateRange: DateRange | undefined;
+}
+
+const TopBar = ({ dateRange }: Props) => {
 	const { dispatch } = useContext(FuelLogModalContext);
 	const path = usePathname();
+	const router = useRouter();
 
-	const [date, setDate] = useState<DateRange | undefined>({
-		from: undefined,
-		to: new Date()
-	});
+	const [date, setDate] = useState<DateRange | undefined>(dateRange);
 
 	return (
 		<div className="flex flex-row justify-between align-middle">
 			<div className="flex flex-row">
+				{date !== undefined ? (
+					<Button
+						variant="outline"
+						size="icon"
+						onClick={() => {
+							setDate(undefined);
+							router.push(path);
+						}}
+					>
+						<LuX className="text-xl" />
+					</Button>
+				) : (
+					<></>
+				)}
 				<Popover>
 					<PopoverTrigger asChild>
 						<Button
@@ -76,6 +92,21 @@ const TopBar = () => {
 						date.from === undefined ||
 						date.to === undefined
 					}
+					onClick={() => {
+						if (
+							date !== undefined &&
+							date.from !== undefined &&
+							date.to !== undefined
+						) {
+							router.push(
+								path +
+									'?from=' +
+									format(date.from, 'yyyy-MM-dd') +
+									'&to=' +
+									format(date.to, 'yyyy-MM-dd')
+							);
+						}
+					}}
 				>
 					Submit
 				</Button>

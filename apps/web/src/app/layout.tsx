@@ -1,3 +1,4 @@
+import Footer from '@/components/footer/footer';
 import Navbar from '@/components/navbar/navbar';
 import { cn } from '@/lib/utils';
 import { authOptions } from '@/models/AuthOptions';
@@ -7,7 +8,6 @@ import { Inter as FontSans } from 'next/font/google';
 import { redirect } from 'next/navigation';
 import './globals.css';
 import { Providers } from './providers';
-import Footer from '@/components/footer/footer';
 
 export const metadata: Metadata = {
 	title: 'Fuel Logger',

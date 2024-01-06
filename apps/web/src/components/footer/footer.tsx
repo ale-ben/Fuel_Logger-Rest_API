@@ -10,8 +10,7 @@ export default function Footer() {
 				https://github.com/ale-ben/Fuel_Logger/tree/master
 			</a>
 			<a className="text-center">
-				Released under{' '}
-				<i>GNU GENERAL PUBLIC LICENSE version 3</i>
+				Released under <i>GNU GENERAL PUBLIC LICENSE version 3</i>
 			</a>
 			<a className="mr-2 text-right">v{packageInfo.version}</a>
 		</p>

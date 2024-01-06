@@ -22,7 +22,6 @@ export default async function LogView({ searchParams }: Props) {
 
 	return (
 		<div className="flex h-full flex-col">
-			<div className="text-center text-2xl">Fuel Logs</div>
 			<div className="m-5 grow">
 				<TopBar dateRange={filterRange} />
 				<Separator className="my-5" />

@@ -101,7 +101,7 @@ importers:
         version: 2.2.0
       tailwindcss-animate:
         specifier: ^1.0.7
-        version: 1.0.7(tailwindcss@3.4.0)
+        version: 1.0.7(tailwindcss@3.4.1)
     devDependencies:
       '@fuel-logger/config-prettier':
         specifier: workspace:*
@@ -158,11 +158,11 @@ importers:
         specifier: ^3.2.4
         version: 3.2.4(prettier@3.1.1)(typescript@5.3.3)
       prettier-plugin-tailwindcss:
-        specifier: ^0.5.10
-        version: 0.5.10(prettier-plugin-organize-imports@3.2.4)(prettier@3.1.1)
+        specifier: ^0.5.11
+        version: 0.5.11(prettier-plugin-organize-imports@3.2.4)(prettier@3.1.1)
       tailwindcss:
-        specifier: ^3.4.0
-        version: 3.4.0(ts-node@10.9.2)
+        specifier: ^3.4.1
+        version: 3.4.1(ts-node@10.9.2)
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.10.6)(typescript@5.3.3)
@@ -183,8 +183,8 @@ importers:
         specifier: workspace:*
         version: link:../config/typescript
       '@types/node':
-        specifier: ^20.10.5
-        version: 20.10.6
+        specifier: ^20.10.7
+        version: 20.10.7
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.15.0
         version: 6.17.0(@typescript-eslint/parser@6.17.0)(eslint@8.56.0)(typescript@5.3.3)
@@ -3319,6 +3319,12 @@ packages:
     dependencies:
       undici-types: 5.26.5
 
+  /@types/node@20.10.7:
+    resolution: {integrity: sha512-fRbIKb8C/Y2lXxB5eVMj4IU7xpdox0Lh8bUPEdtLysaylsml1hOOx1+STloRs/B9nf7C6kPRmmg/V7aQW7usNg==}
+    dependencies:
+      undici-types: 5.26.5
+    dev: true
+
   /@types/normalize-package-data@2.4.4:
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
     dev: false
@@ -5989,7 +5995,7 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 20.10.6
+      '@types/node': 20.10.7
       merge-stream: 2.0.0
       supports-color: 8.1.1
     dev: true
@@ -7072,8 +7078,8 @@ packages:
       typescript: 5.3.3
     dev: true
 
-  /prettier-plugin-tailwindcss@0.5.10(prettier-plugin-organize-imports@3.2.4)(prettier@3.1.1):
-    resolution: {integrity: sha512-9UGSejqFxGG6brYjFfTYlJ8zs4L/lvZg1AngFfaC5Fs1otSskASv5IWKmjPu5MlABQUtTKtMArKyYr/hWpXSUg==}
+  /prettier-plugin-tailwindcss@0.5.11(prettier-plugin-organize-imports@3.2.4)(prettier@3.1.1):
+    resolution: {integrity: sha512-AvI/DNyMctyyxGOjyePgi/gqj5hJYClZ1avtQvLlqMT3uDZkRbi4HhGUpok3DRzv9z7Lti85Kdj3s3/1CeNI0w==}
     engines: {node: '>=14.21.3'}
     peerDependencies:
       '@ianvs/prettier-plugin-sort-imports': '*'
@@ -7482,7 +7488,7 @@ packages:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
     hasBin: true
     dependencies:
-      glob: 7.1.4
+      glob: 7.1.7
     dev: true
 
   /rimraf@5.0.5:
@@ -7957,16 +7963,16 @@ packages:
       '@babel/runtime': 7.23.7
     dev: false
 
-  /tailwindcss-animate@1.0.7(tailwindcss@3.4.0):
+  /tailwindcss-animate@1.0.7(tailwindcss@3.4.1):
     resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders'
     dependencies:
-      tailwindcss: 3.4.0(ts-node@10.9.2)
+      tailwindcss: 3.4.1(ts-node@10.9.2)
     dev: false
 
-  /tailwindcss@3.4.0(ts-node@10.9.2):
-    resolution: {integrity: sha512-VigzymniH77knD1dryXbyxR+ePHihHociZbXnLZHUyzf2MMs2ZVqlUrZ3FvpXP8pno9JzmILt1sZPD19M3IxtA==}
+  /tailwindcss@3.4.1(ts-node@10.9.2):
+    resolution: {integrity: sha512-qAYmXRfk3ENzuPBakNK0SRrUDipP8NQnEY6772uDhflcQz5EhRdD7JNZxyrFHVQNCwULPBn6FNPp9brpO7ctcA==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:

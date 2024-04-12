@@ -16,3 +16,14 @@ updates:
       minors:
         update-types:
           - "minor"
+  - package-ecosystem: "cargo" # See documentation for possible values
+    directory: "/TelegramBot/" # Location of package manifests
+    schedule:
+      interval: "weekly"
+    groups:
+      patches:
+        update-types:
+          - "patch"
+      minors:
+        update-types:
+          - "minor"

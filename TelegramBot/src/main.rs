@@ -1,7 +1,9 @@
 use frankenstein::GetUpdatesParams;
+use frankenstein::Message;
 use frankenstein::ReplyParameters;
 use frankenstein::SendMessageParams;
 use frankenstein::TelegramApi;
+use frankenstein::Update;
 use frankenstein::{Api, UpdateContent};
 
 extern crate dotenv;
@@ -21,7 +23,6 @@ fn main() {
         ..Config::new_reltime()
     });
 
-
     // Init env
     dotenv().ok();
 
@@ -29,8 +30,12 @@ fn main() {
 
     let api = Api::new(&token);
 
+    polling(&api)
+}
+
+fn polling(api: &Api) {
     let update_params_builder = GetUpdatesParams::builder();
-    let mut update_params = update_params_builder.clone().build();
+    let mut update_params = update_params_builder.clone().timeout(60 as u32).build();
 
     loop {
         let result = api.get_updates(&update_params);
@@ -42,19 +47,23 @@ fn main() {
                 }
 
                 for update in response.result {
-                    if let UpdateContent::Message(message) = update.content {
-                        send_message(&api, message.chat.id, message.message_id, "Hello")
-                    }
+                    handle_update(&api, &update);
                     update_params = update_params_builder
                         .clone()
                         .offset(update.update_id + 1)
-                        .build();
+                        .build(); //TODO: Does it keep the timeout?
                 }
             }
             Err(error) => {
                 warn!("Failed to get updates: {error:?}");
             }
         }
+    }
+}
+
+fn handle_update(api: &Api, update: &Update) {
+    if let UpdateContent::Message(message) = &update.content {
+        send_message(&api, message.chat.id, message.message_id, "Hello")
     }
 }
 

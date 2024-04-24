@@ -2,13 +2,25 @@ use frankenstein::{AllowedUpdate, Api, GetUpdatesParams, ReplyParameters, SendMe
 
 pub struct TelegramClient {
     api: Api,
-	update_params: GetUpdatesParams,
+	last_update: u32,
 }
 
 impl TelegramClient {
     pub fn new(key: &str) -> Self {
-        Self { api: Api::new(key), update_params: GetUpdatesParams::builder().timeout(60 as u32).build() }
+        Self { api: Api::new(key), last_update: 0 }
     }
+
+	fn get_update_params(&self) -> GetUpdatesParams {
+		let update_params = GetUpdatesParams::builder()
+		.allowed_updates(vec![AllowedUpdate::Message])
+		.timeout(60_u32);
+
+		if self.last_update != 0 {
+			update_params.offset(self.last_update+1).build()
+		} else {
+			update_params.build()
+		}
+	} 
 
     pub fn send_message(&self, chat: i64, message: i32, text: &str) {
         let reply_parameters = ReplyParameters::builder().message_id(message).build();
@@ -25,7 +37,7 @@ impl TelegramClient {
     }
 
     pub fn get_updates(&mut self) -> Result<Vec<Update>, &str>{
-		let result = self.api.get_updates(&(self.update_params));
+		let result = self.api.get_updates(&self.get_update_params());
 
 		match result {
             Ok(response) => {
@@ -37,12 +49,7 @@ impl TelegramClient {
 
 				match last_id {
 					Some(id) => {
-						self.update_params = GetUpdatesParams::builder()
-						.timeout(60 as u32)
-                        .offset(id + 1)
-						.allowed_updates(vec![AllowedUpdate::Message])
-                        .build();
-
+						self.last_update = id;
 						Ok(response.result)
 					}
 					None => {

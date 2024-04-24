@@ -1,4 +1,3 @@
-use frankenstein::GetUpdatesParams;
 use frankenstein::Update;
 use frankenstein::UpdateContent;
 
@@ -31,17 +30,24 @@ fn main() {
     polling(client);
 }
 
-fn polling(client: TelegramClient) {
+fn polling(mut client: TelegramClient) {
 
     loop {
-      
+      let updates = client.get_updates();
+
+		if let Ok(updates) = updates {
+			for update in updates {
+				handle_update(&client, update)
+			}
+		}
+
 
        
     }
 }
 
-fn handle_update(client: &TelegramClient, update: &Update) {
-    if let UpdateContent::Message(message) = &update.content {
+fn handle_update(client: &TelegramClient, update: Update) {
+    if let UpdateContent::Message(message) = update.content {
         client.send_message(message.chat.id, message.message_id, "Hello")
     }
 }

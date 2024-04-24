@@ -1,6 +1,5 @@
 use frankenstein::{
-    AllowedUpdate, Api, BotCommand, GetUpdatesParams, ReplyParameters, SendMessageParams,
-    SetMyCommandsParams, TelegramApi, Update,
+    AllowedUpdate, Api, BotCommand, Error, GetUpdatesParams, Message, MethodResponse, ReplyParameters, SendMessageParams, SetMyCommandsParams, TelegramApi, Update
 };
 
 pub struct TelegramClient {
@@ -12,7 +11,7 @@ impl TelegramClient {
     pub fn new(key: &str) -> Self {
         let bot_commands: [BotCommand; 2] = [
             BotCommand::builder()
-                .command("/ping")
+                .command("ping")
                 .description("You guessed it...")
                 .build(),
             BotCommand::builder()
@@ -59,16 +58,22 @@ impl TelegramClient {
         }
     }
 
-    pub fn send_message(&self, chat: i64, message: i32, text: &str) {
-        let reply_parameters = ReplyParameters::builder().message_id(message).build();
-
-        let send_message_params = SendMessageParams::builder()
+    pub fn send_message(&self, chat: i64, reply_to_msg: Option<i32>, text: &str) {
+		let send_message_params = SendMessageParams::builder()
             .chat_id(chat)
-            .text(text)
-            .reply_parameters(reply_parameters)
-            .build();
+            .text(text);
 
-        if let Err(err) = self.api.send_message(&send_message_params) {
+		let mut result: Result<MethodResponse<Message>, Error>;
+
+		if let Some(msg_id) = reply_to_msg {
+			let reply_parameters = ReplyParameters::builder().message_id(msg_id).build();
+			let send_message_params = send_message_params.reply_parameters(reply_parameters).build();
+			result = self.api.send_message(&send_message_params);
+		} else {
+			result = self.api.send_message(&send_message_params.build())
+		}
+
+        if let Err(err) = result {
             warn!("Failed to send message: {err:?}");
         }
     }

@@ -40,14 +40,32 @@ fn polling(mut client: TelegramClient) {
 				handle_update(&client, update)
 			}
 		}
-
-
-       
     }
 }
 
 fn handle_update(client: &TelegramClient, update: Update) {
     if let UpdateContent::Message(message) = update.content {
-        client.send_message(message.chat.id, message.message_id, "Hello")
+		 if let Some(text) = message.text {
+			if text.starts_with("/") {
+				// This is a command
+				match text.as_str() {
+					"/ping" => {
+						client.send_message(message.chat.id, Some(message.message_id), "pong");
+					}
+					"/newlog" => {
+						client.send_message(message.chat.id, None, "New Log!");
+					}
+					"clear" => {
+
+					}
+					_ => {
+
+					}
+				}
+			} else {
+				// This is a normal message
+
+			}
+		}
     }
 }

@@ -1,6 +1,9 @@
 use frankenstein::{
-    AllowedUpdate, Api, BotCommand, Error, GetUpdatesParams, Message, MethodResponse, ReplyParameters, SendMessageParams, SetMyCommandsParams, TelegramApi, Update
+    AllowedUpdate, Api, BotCommand, Error, GetUpdatesParams, Message, MethodResponse,
+    ReplyParameters, SendMessageParams, SetMyCommandsParams, TelegramApi, Update,
 };
+
+const AUTHORIZED_USERS: [(&str, u64); 1] = [("aleben", 49768658)];
 
 pub struct TelegramClient {
     api: Api,
@@ -9,7 +12,7 @@ pub struct TelegramClient {
 
 impl TelegramClient {
     pub fn new(key: &str) -> Self {
-        let bot_commands: [BotCommand; 2] = [
+        let bot_commands: [BotCommand; 3] = [
             BotCommand::builder()
                 .command("ping")
                 .description("You guessed it...")
@@ -17,6 +20,10 @@ impl TelegramClient {
             BotCommand::builder()
                 .command("newlog")
                 .description("Add a new log to the database")
+                .build(),
+            BotCommand::builder()
+                .command("clear")
+                .description("Removes the log being created")
                 .build(),
         ];
 
@@ -27,24 +34,32 @@ impl TelegramClient {
                 .build(),
         );
 
-		match response {
-			Ok(result) => {
-				if result.ok {
-					debug!("Commands set correctly")
-				} else {
-					warn!("Set commands returned false ({0:?})", result.description)
-				}
-			}
-			Err(err) => {
-				warn!("Set commands failed with error {err:?}")
-			}
-		}
+        match response {
+            Ok(result) => {
+                if result.ok {
+                    debug!("Commands set correctly")
+                } else {
+                    warn!("Set commands returned false ({0:?})", result.description)
+                }
+            }
+            Err(err) => {
+                warn!("Set commands failed with error {err:?}")
+            }
+        }
 
         Self {
             api,
             last_update: 0,
         }
     }
+
+	pub fn authenticate(msg: &Message) -> bool {
+		if let Some(user) = &msg.from {
+			AUTHORIZED_USERS.into_iter().any(|usr| usr.1 == user.id)
+		} else {
+			false
+		}
+	}
 
     fn get_update_params(&self) -> GetUpdatesParams {
         let update_params = GetUpdatesParams::builder()
@@ -59,19 +74,19 @@ impl TelegramClient {
     }
 
     pub fn send_message(&self, chat: i64, reply_to_msg: Option<i32>, text: &str) {
-		let send_message_params = SendMessageParams::builder()
-            .chat_id(chat)
-            .text(text);
+        let send_message_params = SendMessageParams::builder().chat_id(chat).text(text);
 
-		let mut result: Result<MethodResponse<Message>, Error>;
+        let result: Result<MethodResponse<Message>, Error>;
 
-		if let Some(msg_id) = reply_to_msg {
-			let reply_parameters = ReplyParameters::builder().message_id(msg_id).build();
-			let send_message_params = send_message_params.reply_parameters(reply_parameters).build();
-			result = self.api.send_message(&send_message_params);
-		} else {
-			result = self.api.send_message(&send_message_params.build())
-		}
+        if let Some(msg_id) = reply_to_msg {
+            let reply_parameters = ReplyParameters::builder().message_id(msg_id).build();
+            let send_message_params = send_message_params
+                .reply_parameters(reply_parameters)
+                .build();
+            result = self.api.send_message(&send_message_params);
+        } else {
+            result = self.api.send_message(&send_message_params.build())
+        }
 
         if let Err(err) = result {
             warn!("Failed to send message: {err:?}");

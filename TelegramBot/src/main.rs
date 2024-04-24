@@ -31,41 +31,42 @@ fn main() {
 }
 
 fn polling(mut client: TelegramClient) {
-
     loop {
-      let updates = client.get_updates();
+        let updates = client.get_updates();
 
-		if let Ok(updates) = updates {
-			for update in updates {
-				handle_update(&client, update)
-			}
-		}
+        if let Ok(updates) = updates {
+            for update in updates {
+                handle_update(&client, update)
+            }
+        }
     }
 }
 
 fn handle_update(client: &TelegramClient, update: Update) {
     if let UpdateContent::Message(message) = update.content {
-		 if let Some(text) = message.text {
-			if text.starts_with("/") {
-				// This is a command
-				match text.as_str() {
-					"/ping" => {
-						client.send_message(message.chat.id, Some(message.message_id), "pong");
-					}
-					"/newlog" => {
-						client.send_message(message.chat.id, None, "New Log!");
-					}
-					"clear" => {
-
-					}
-					_ => {
-
-					}
-				}
-			} else {
-				// This is a normal message
-
-			}
+        if TelegramClient::authenticate(&message) {
+            if let Some(text) = message.text {
+                if text.starts_with("/") {
+                    // This is a command
+                    match text.as_str() {
+                        "/ping" => {
+                            client.send_message(message.chat.id, Some(message.message_id), "pong");
+                        }
+                        "/newlog" => {
+                            client.send_message(message.chat.id, None, "New Log!");
+                        }
+                        "/clear" => {}
+                        _ => {}
+                    }
+                } else {
+                    // This is a normal message
+                }
+            }
+        } else {
+			let user = message.from.unwrap();
+			let username = user.username.unwrap_or("unknown".to_string());
+			let msg = format!("This account is not allowed to interact with the bot.\nIf you think this is a mistake, please forward this message to an administrator.\nUsername: {}\nUser ID: {}", username, user.id);
+			client.send_message(message.chat.id, None, &msg)
 		}
     }
 }

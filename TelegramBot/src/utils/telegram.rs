@@ -1,6 +1,8 @@
+use super::fuel_log::FuelLog;
 use frankenstein::{
-    AllowedUpdate, Api, BotCommand, Error, GetUpdatesParams, Message, MethodResponse,
-    ReplyParameters, SendMessageParams, SetMyCommandsParams, TelegramApi, Update,
+    AllowedUpdate, Api, BotCommand, Error, GetUpdatesParams, InlineKeyboardButton,
+    InlineKeyboardMarkup, Message, MethodResponse, ParseMode, ReplyMarkup, ReplyParameters,
+    SendMessageParams, SetMyCommandsParams, TelegramApi, Update, UpdateContent,
 };
 
 const AUTHORIZED_USERS: [(&str, u64); 1] = [("aleben", 49768658)];
@@ -53,17 +55,26 @@ impl TelegramClient {
         }
     }
 
-	pub fn authenticate(msg: &Message) -> bool {
-		if let Some(user) = &msg.from {
-			AUTHORIZED_USERS.into_iter().any(|usr| usr.1 == user.id)
-		} else {
-			false
-		}
-	}
+    pub fn authenticate(update: &UpdateContent) -> bool {
+        if let UpdateContent::Message(message) = update {
+            if let Some(user) = &message.from {
+                return AUTHORIZED_USERS.into_iter().any(|usr| usr.1 == user.id);
+            } else {
+                return false;
+            }
+        } else {
+            if let UpdateContent::CallbackQuery(query) = update {
+                return AUTHORIZED_USERS
+                    .into_iter()
+                    .any(|usr| usr.1 == query.from.id);
+            }
+        }
+        false
+    }
 
     fn get_update_params(&self) -> GetUpdatesParams {
         let update_params = GetUpdatesParams::builder()
-            .allowed_updates(vec![AllowedUpdate::Message])
+            .allowed_updates(vec![AllowedUpdate::Message, AllowedUpdate::CallbackQuery])
             .timeout(60_u32);
 
         if self.last_update != 0 {
@@ -116,6 +127,44 @@ impl TelegramClient {
                 warn!("Failed to get updates: {error:?}");
                 Err("Failed to get updates")
             }
+        }
+    }
+
+    pub fn send_recap(&self, chat: i64, fuel_log: &FuelLog) {
+        let msg = format!(
+            "New log ({}):\n*{}* _Km_\n*{}* _L_\n*{}* _€_\n*{}* _€/L_",
+            fuel_log.entries[0].date,
+            fuel_log.odometer,
+            fuel_log.entries[0].amount,
+            fuel_log.entries[0].cost,
+            fuel_log.entries[0].cost / fuel_log.entries[0].amount
+        )
+        .replace("(", "\\(")
+        .replace(")", "\\)")
+        .replace("-", "\\-")
+        .replace(".", "\\.")
+        .replace("+", "\\+");
+        let inline_kbd = InlineKeyboardMarkup::builder()
+            .inline_keyboard(vec![vec![
+                InlineKeyboardButton::builder()
+                    .text("Save")
+                    .callback_data("save")
+                    .build(),
+                InlineKeyboardButton::builder()
+                    .text("Clear")
+                    .callback_data("clear")
+                    .build(),
+            ]])
+            .build();
+        let send_message_params = SendMessageParams::builder()
+            .chat_id(chat)
+            .text(msg)
+            .reply_markup(ReplyMarkup::InlineKeyboardMarkup(inline_kbd))
+            .parse_mode(ParseMode::MarkdownV2);
+        let result = self.api.send_message(&send_message_params.build());
+
+        if let Err(err) = result {
+            warn!("Failed to send message: {err:?}");
         }
     }
 }

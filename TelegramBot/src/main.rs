@@ -15,6 +15,9 @@ use utils::fuel_log::FuelLog;
 mod utils;
 use utils::telegram::TelegramClient;
 
+mod database;
+
+
 extern crate lovely_env_logger;
 #[macro_use]
 extern crate log;

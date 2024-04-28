@@ -3,6 +3,6 @@ create table public.FuelLogs (
 		id       integer not null
 		constraint FuelLogs_pk
 		primary key,
-	odometer FLOAT   not null,
+	odometer float4   not null,
 	flagged  BOOLEAN not null
 );

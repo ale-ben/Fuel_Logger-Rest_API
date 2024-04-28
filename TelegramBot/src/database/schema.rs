@@ -4,8 +4,8 @@ diesel::table! {
     fuelentries (id) {
         id -> Int4,
         date -> Timestamp,
-        amount -> Float8,
-        cost -> Float8,
+        amount -> Float4,
+        cost -> Float4,
         fuellog -> Int4,
     }
 }
@@ -13,7 +13,7 @@ diesel::table! {
 diesel::table! {
     fuellogs (id) {
         id -> Int4,
-        odometer -> Float8,
+        odometer -> Float4,
         flagged -> Bool,
     }
 }

@@ -1,9 +1,10 @@
-use super::fuel_log::FuelLog;
 use frankenstein::{
     AllowedUpdate, Api, BotCommand, Error, GetUpdatesParams, InlineKeyboardButton,
     InlineKeyboardMarkup, Message, MethodResponse, ParseMode, ReplyMarkup, ReplyParameters,
     SendMessageParams, SetMyCommandsParams, TelegramApi, Update, UpdateContent,
 };
+
+use crate::database::models::{CompleteLog, NewCompleteLog};
 
 const AUTHORIZED_USERS: [(&str, u64); 1] = [("aleben", 49768658)];
 
@@ -130,16 +131,16 @@ impl TelegramClient {
         }
     }
 
-    pub fn send_recap(&self, chat: i64, fuel_log: &FuelLog) {
+    pub fn send_recap(&self, chat: i64, fuel_log: &CompleteLog) {
         let msg = format!(
             "New log ({}):\n*{}* _Km_\n*{}* _L_\n*{}* _€_\n*{}* _€/L_",
-            fuel_log.entries[0].date,
-            fuel_log.odometer,
+            fuel_log.entries[0].date.0, //FIXME: This should be parsed to a valid date
+            fuel_log.log.odometer,
             fuel_log.entries[0].amount,
             fuel_log.entries[0].cost,
             fuel_log.entries[0].cost / fuel_log.entries[0].amount
         )
-        .replace("(", "\\(")
+        .replace("(", "\\(") //TODO: What is still needed?
         .replace(")", "\\)")
         .replace("-", "\\-")
         .replace(".", "\\.")

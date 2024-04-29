@@ -1,6 +1,6 @@
 -- Your SQL goes here
 create table public.FuelLogs (
-		id       integer not null
+		id       serial not null
 		constraint FuelLogs_pk
 		primary key,
 	odometer float4   not null,

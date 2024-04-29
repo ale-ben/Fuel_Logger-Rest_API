@@ -1,5 +1,5 @@
-use diesel::{data_types::PgTimestamp, prelude::*};
-use time::OffsetDateTime;
+use diesel::prelude::*;
+use time::{OffsetDateTime, PrimitiveDateTime};
 
 #[derive(Queryable, Selectable)]
 #[diesel(table_name = crate::database::schema::fuellogs)]
@@ -39,7 +39,7 @@ pub struct NewFuelLog<'a> {
 #[diesel(check_for_backend(diesel::pg::Pg))]
 pub struct FuelEntry {
     pub id: i32,
-    pub date: PgTimestamp,
+    pub date: PrimitiveDateTime,
     pub amount: f32,
     pub cost: f32,
     pub fuellog: i32,
@@ -47,9 +47,11 @@ pub struct FuelEntry {
 
 impl FuelEntry {
     pub fn new() -> Self {
+		let now_odt = OffsetDateTime::now_utc();
+
         Self {
             id: -1,
-            date: PgTimestamp(OffsetDateTime::now_utc().unix_timestamp()),
+            date: PrimitiveDateTime::new(now_odt.date(), now_odt.time()),
             amount: 0_f32,
             cost: 0_f32,
             fuellog: -1,
@@ -69,7 +71,7 @@ impl FuelEntry {
 #[derive(Insertable)]
 #[diesel(table_name = crate::database::schema::fuelentries)]
 pub struct NewFuelEntry<'a> {
-    pub date: &'a PgTimestamp,
+    pub date: &'a PrimitiveDateTime,
     pub amount: &'a f32,
     pub cost: &'a f32,
     pub fuellog: &'a i32,

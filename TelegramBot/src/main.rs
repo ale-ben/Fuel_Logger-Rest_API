@@ -17,6 +17,10 @@ mod utils;
 use utils::telegram::TelegramClient;
 
 mod database;
+use database::database::DB;
+
+use crate::database::models::NewCompleteLog;
+use crate::database::models::NewFuelEntry;
 
 extern crate lovely_env_logger;
 #[macro_use]
@@ -32,13 +36,15 @@ fn main() {
     // Init env
     dotenv().ok();
 
+	let db = DB::establish_connection();
+
     let token = env::var("FL_TELEGRAM_TOKEN").unwrap();
     let client = TelegramClient::new(&token);
 
-    polling(client);
+    polling(client, db);
 }
 
-fn polling(mut client: TelegramClient) {
+fn polling(mut client: TelegramClient, mut db: DB) {
     let mut current_log: Option<CompleteLog> = None;
 
     loop {
@@ -46,7 +52,7 @@ fn polling(mut client: TelegramClient) {
 
         if let Ok(updates) = updates {
             for update in updates {
-                current_log = handle_update(&client, update, current_log);
+                current_log = handle_update(&client, update, current_log, &mut db);
             }
         }
     }
@@ -56,13 +62,14 @@ fn handle_update(
     client: &TelegramClient,
     update: Update,
     current_log: Option<CompleteLog>,
+	db: &mut DB,
 ) -> Option<CompleteLog> {
     if TelegramClient::authenticate(&update.content) {
         if let UpdateContent::Message(message) = update.content {
             return handle_update_message(client, message, current_log);
         } else {
             if let UpdateContent::CallbackQuery(query) = update.content {
-                return handle_update_callback_query(client, query, current_log);
+                return handle_update_callback_query(client, query, current_log, db);
             }
         }
     } else {
@@ -181,11 +188,21 @@ fn handle_update_callback_query(
     client: &TelegramClient,
     query: CallbackQuery,
     current_log: Option<CompleteLog>,
+	db: &mut DB,
 ) -> Option<CompleteLog> {
     if let Some(data) = query.data {
         match data.as_str() {
             "save" => {
-                info!("Save log")
+                info!("Save log");
+				match &current_log {
+					Some(log) => {
+						let entries: Vec<NewFuelEntry> = log.entries.iter().map(|entry| entry.to_new_fuel_entry()).collect();
+						db.save_log(NewCompleteLog { log: log.log.to_new_fuel_log(), entries });
+					}
+					None => {
+						warn!("Trying to save inexistent log");
+					}
+				}
             }
             "clear" => {
                 info!("Clear log")

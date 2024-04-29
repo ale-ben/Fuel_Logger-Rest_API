@@ -4,7 +4,6 @@ use dotenvy::dotenv;
 use std::env;
 
 use crate::database::models::{FuelEntry, FuelLog, NewFuelEntry};
-use crate::database::schema::fuelentries::fuellog;
 
 use super::models::NewCompleteLog;
 

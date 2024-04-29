@@ -1,6 +1,6 @@
 -- Your SQL goes here
 create table public.FuelEntries (
-	id      integer   not null
+	id      serial   not null
 		constraint FuelEntries_pk
 		primary key,
 	date    TIMESTAMP not null,

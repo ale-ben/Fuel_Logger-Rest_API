@@ -73,8 +73,19 @@ fn handle_update(
             }
         }
     } else {
-        //TODO: How do I extract the user?
-        warn!("Unauthorized user")
+        warn!("Unauthorized user");
+		let txt = "User is not authorized.";
+		if let UpdateContent::Message(message) = update.content {
+			client.send_message(message.chat.id, None, txt);
+        } else {
+            if let UpdateContent::CallbackQuery(query) = update.content {
+				if let Some(maybe_msg) = query.message {
+					if let MaybeInaccessibleMessage::Message(msg) = maybe_msg {
+						client.send_message(msg.chat.id, None, txt);
+					}
+				}
+            }
+        }
     }
     current_log
 }

@@ -36,7 +36,7 @@ fn main() {
     // Init env
     dotenv().ok();
 
-	let db = DB::establish_connection();
+    let db = DB::establish_connection();
 
     let token = env::var("FL_TELEGRAM_TOKEN").unwrap();
     let client = TelegramClient::new(&token);
@@ -62,7 +62,7 @@ fn handle_update(
     client: &TelegramClient,
     update: Update,
     current_log: Option<CompleteLog>,
-	db: &mut DB,
+    db: &mut DB,
 ) -> Option<CompleteLog> {
     if TelegramClient::authenticate(&update.content) {
         if let UpdateContent::Message(message) = update.content {
@@ -100,7 +100,7 @@ fn handle_update_message(
                     });
                 }
                 "/clear" => {
-                    client.send_message(message.chat.id, None, "Current log cleared");
+                    client.send_message(message.chat.id, None, "Log cleared");
                     return None;
                 }
                 _ => {
@@ -188,32 +188,66 @@ fn handle_update_callback_query(
     client: &TelegramClient,
     query: CallbackQuery,
     current_log: Option<CompleteLog>,
-	db: &mut DB,
+    db: &mut DB,
 ) -> Option<CompleteLog> {
     if let Some(data) = query.data {
         match data.as_str() {
             "save" => {
                 info!("Save log");
-				match &current_log {
-					Some(log) => {
-						let entries: Vec<NewFuelEntry> = log.entries.iter().map(|entry| entry.to_new_fuel_entry()).collect();
-						db.save_log(NewCompleteLog { log: log.log.to_new_fuel_log(), entries });
-					}
-					None => {
-						warn!("Trying to save inexistent log");
-					}
-				}
+                match &current_log {
+                    Some(log) => {
+                        let entries: Vec<NewFuelEntry> = log
+                            .entries
+                            .iter()
+                            .map(|entry| entry.to_new_fuel_entry())
+                            .collect();
+                        let res = db.save_log(NewCompleteLog {
+                            log: log.log.to_new_fuel_log(),
+                            entries,
+                        });
+
+                        if let Some(maybe_msg) = query.message {
+                            if let MaybeInaccessibleMessage::Message(msg) = maybe_msg {
+                                if res {
+                                    client.remove_message_reply_markup(msg.chat.id, msg.message_id);
+									client.send_message(msg.chat.id, None, "✅ Log saved");
+									return None;
+                                } else {
+									client.send_message(msg.chat.id, None, "❌ There was a problem saving the log. Please retry");
+									return current_log;
+                                }
+                            }
+                        }
+                    }
+                    None => {
+                        warn!("Trying to save inexistent log");
+                        if let Some(maybe_msg) = query.message {
+                            if let MaybeInaccessibleMessage::Message(msg) = maybe_msg {
+                                client.remove_message_reply_markup(msg.chat.id, msg.message_id)
+                            }
+                        }
+						return None;
+                    }
+                }
             }
             "clear" => {
-                info!("Clear log")
+                info!("Clear log");
+                if let Some(maybe_msg) = query.message {
+                    if let MaybeInaccessibleMessage::Message(msg) = maybe_msg {
+                        client.remove_message_reply_markup(msg.chat.id, msg.message_id);
+                        client.send_message(msg.chat.id, None, "Log cleared");
+                    }
+                }
+                return None;
             }
             _ => {
                 warn!("Unknown case reached in handle_update_callback_query");
                 if let Some(maybe_message) = query.message {
                     if let MaybeInaccessibleMessage::Message(msg) = maybe_message {
-                        client.send_message(msg.chat.id, None, "You should win a prize for your ability in reaching unreachable branches...\nPlease report this!");
+                        client.send_message(msg.chat.id, None, "❌ You should win a prize for your ability in reaching unreachable branches...\nPlease report this!");
                     }
                 }
+				return current_log;
             }
         }
     }

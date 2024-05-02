@@ -1,7 +1,7 @@
 use frankenstein::{
-    AllowedUpdate, Api, BotCommand, Error, GetUpdatesParams, InlineKeyboardButton,
-    InlineKeyboardMarkup, Message, MethodResponse, ParseMode, ReplyMarkup, ReplyParameters,
-    SendMessageParams, SetMyCommandsParams, TelegramApi, Update, UpdateContent,
+    AllowedUpdate, Api, BotCommand, EditMessageReplyMarkupParams, Error, GetUpdatesParams,
+    InlineKeyboardButton, InlineKeyboardMarkup, Message, MethodResponse, ParseMode, ReplyMarkup,
+    ReplyParameters, SendMessageParams, SetMyCommandsParams, TelegramApi, Update, UpdateContent,
 };
 use time::format_description;
 
@@ -133,11 +133,15 @@ impl TelegramClient {
     }
 
     pub fn send_recap(&self, chat: i64, fuel_log: &CompleteLog) {
-		let format = format_description::parse("[day]/[month]/[year] - [hour]:[minute]").expect("Something went wrong in formatter");
+        let format = format_description::parse("[day]/[month]/[year] - [hour]:[minute]")
+            .expect("Something went wrong in formatter");
 
         let msg = format!(
             "New log ({:?}):\n*{}* _Km_\n*{}* _L_\n*{}* _€_\n*{}* _€/L_",
-            fuel_log.entries[0].date.format(&format).expect("Something went wrong with date parsing"),
+            fuel_log.entries[0]
+                .date
+                .format(&format)
+                .expect("Something went wrong with date parsing"),
             fuel_log.log.odometer,
             fuel_log.entries[0].amount,
             fuel_log.entries[0].cost,
@@ -147,7 +151,7 @@ impl TelegramClient {
         .replace(")", "\\)")
         .replace("-", "\\-")
         .replace(".", "\\.");
-		trace!("Recap output string: {msg}");
+        trace!("Recap output string: {msg}");
         let inline_kbd = InlineKeyboardMarkup::builder()
             .inline_keyboard(vec![vec![
                 InlineKeyboardButton::builder()
@@ -169,6 +173,19 @@ impl TelegramClient {
 
         if let Err(err) = result {
             warn!("Failed to send message: {err:?}");
+        }
+    }
+
+    pub fn remove_message_reply_markup(&self, chat_id: i64, message_id: i32) {
+        let params = EditMessageReplyMarkupParams::builder()
+            .chat_id(chat_id)
+            .message_id(message_id)
+            .build();
+
+        let res = self.api.edit_message_reply_markup(&params);
+
+        if let Err(err) = res {
+            error!("{err}")
         }
     }
 }

@@ -23,6 +23,7 @@ impl DB {
     }
 
     pub fn save_log(&mut self, complete_log: NewCompleteLog) -> bool {
+		debug!("Saving log");
         use crate::database::schema::fuelentries;
         use crate::database::schema::fuellogs;
 
@@ -46,6 +47,8 @@ impl DB {
                 .expect("Error saving new entries");
 			// TODO: Error handling
         }
+
+		info!("Log saved");
 
         true
     }

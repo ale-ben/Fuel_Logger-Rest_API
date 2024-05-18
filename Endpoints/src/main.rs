@@ -1,6 +1,4 @@
 use rocket_okapi::{openapi_get_routes, swagger_ui::*};
-use rocket_okapi::okapi::schemars::JsonSchema;
-use serde::{Deserialize, Serialize};
 
 use controller::entries;
 use controller::logs;
@@ -13,7 +11,9 @@ async fn main() {
         "/",
         openapi_get_routes![
                 entries::get_entries,
-                logs::get_logs
+                entries::get_entry,
+                logs::get_logs,
+                logs::get_log
             ],
     ).mount(
         "/swagger-ui/",

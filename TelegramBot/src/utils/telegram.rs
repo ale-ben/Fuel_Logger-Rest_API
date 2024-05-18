@@ -16,7 +16,7 @@ pub struct TelegramClient {
 
 impl TelegramClient {
     pub fn new(key: &str) -> Self {
-        let bot_commands: [BotCommand; 3] = [
+        let bot_commands: [BotCommand; 4] = [
             BotCommand::builder()
                 .command("ping")
                 .description("You guessed it...")
@@ -25,6 +25,10 @@ impl TelegramClient {
                 .command("newlog")
                 .description("Add a new log to the database")
                 .build(),
+			BotCommand::builder()
+				.command("stats")
+				.description("General statistics")
+				.build(),
             BotCommand::builder()
                 .command("clear")
                 .description("Removes the log being created")

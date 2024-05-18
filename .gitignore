@@ -20,3 +20,4 @@ yarn-error.log*
 # dist folders
 dist
 /fuel_logger.code-workspace
+Endpoints/target/

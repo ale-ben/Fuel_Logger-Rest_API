@@ -1,19 +1,31 @@
-use rocket_okapi::{openapi_get_routes, swagger_ui::*};
 
-use controller::entries;
+use rocket::get;
+use rocket::serde::json::Json;
+use rocket_okapi::{openapi, openapi_get_routes, swagger_ui::*};
+
 use controller::logs;
+use crate::types::fuel_structs::FuelLogStruct;
 
 mod controller;
+mod storage;
+mod types;
 
 #[rocket::main]
 async fn main() {
+
+    #[openapi(tag = "Test")]
+    #[get("/test")]
+    pub async fn test() {
+
+        println!("Done")
+    }
+
     let launch_result = rocket::build().mount(
         "/",
         openapi_get_routes![
-                entries::get_entries,
-                entries::get_entry,
                 logs::get_logs,
-                logs::get_log
+                logs::get_log,
+                test
             ],
     ).mount(
         "/swagger-ui/",

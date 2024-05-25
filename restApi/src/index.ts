@@ -4,13 +4,17 @@ import dotenv from "dotenv";
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../docs/swagger-output.json';
 import {router as apiRouter} from "./routes/fuelLogs";
+import {initInfluxdbClient} from "./utils/Influxdb";
 
 dotenv.config();
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
 
-app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+initInfluxdbClient();
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use(express.json());
 
 app.use("/logs", apiRouter
 /*

@@ -12,11 +12,27 @@
   ],
   "paths": {
     "/logs/new": {
+      "post": {
+        "tags": [
+          "Logs"
+        ],
+        "description": "Endpoint to add a new fuel log",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/logs/all": {
       "get": {
         "tags": [
           "Logs"
         ],
-        "description": "Endpoint to sign in a specific user",
+        "description": "Endpoint to get all logs",
         "responses": {
           "200": {
             "description": "OK"

@@ -7,21 +7,22 @@ import {getLogs, saveLog} from "../utils/Influxdb";
 
 export const router: Router = express.Router();
 
-router.post("/new", validate(z.object({body: zFuelLog})) ,(req: Request, res: Response) => {
+router.post("/:carName/new", validate(z.object({body: zFuelLog})) ,(req: Request, res: Response) => {
     /*
        #swagger.description = 'Endpoint to add a new fuel log' */
 
+    const carName = req.params.carName;
     const fLog: FuelLog = zFuelLog.parse(req.body);
-    saveLog(fLog).then(() => console.log("Saved"));
+    saveLog(carName, fLog).then(() => console.log("Saved"));
 
     res.json({ok: true});
 });
 
-router.get("/all", (req: Request, res: Response) => {
+router.get("/:carName/all", (req: Request, res: Response) => {
     /*
        #swagger.description = 'Endpoint to get all logs' */
-
-    getLogs();
+    const carName = req.params.carName;
+    getLogs(carName);
 
     res.json({ok: true});
 });

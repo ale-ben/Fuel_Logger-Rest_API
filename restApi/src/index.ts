@@ -3,7 +3,7 @@ import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../docs/swagger-output.json';
-import {router as apiRouter} from "./routes/fuelLogs";
+import {router as logRouter} from "./routes/fuelLogs";
 import {initInfluxdbClient} from "./utils/Influxdb";
 
 dotenv.config();
@@ -16,7 +16,7 @@ initInfluxdbClient();
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(express.json());
 
-app.use("/logs", apiRouter
+app.use("/logs", logRouter
 /*
 * #swagger.tags = ['Logs']
 * */);

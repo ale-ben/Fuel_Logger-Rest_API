@@ -11,12 +11,20 @@
     "http"
   ],
   "paths": {
-    "/logs/new": {
+    "/logs/{carName}/new": {
       "post": {
         "tags": [
           "Logs"
         ],
         "description": "Endpoint to add a new fuel log",
+        "parameters": [
+          {
+            "name": "carName",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -27,12 +35,20 @@
         }
       }
     },
-    "/logs/all": {
+    "/logs/{carName}/all": {
       "get": {
         "tags": [
           "Logs"
         ],
         "description": "Endpoint to get all logs",
+        "parameters": [
+          {
+            "name": "carName",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"

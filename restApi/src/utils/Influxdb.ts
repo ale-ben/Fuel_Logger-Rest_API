@@ -1,5 +1,5 @@
 import {InfluxDB, Point} from "@influxdata/influxdb-client";
-import {FuelLog} from "../types/fuelLogTypes";
+import {FuelLog, zFuelLog} from "../types/fuelLogTypes";
 
 let org = process.env.INFLUXDB_ORG;
 let bucket = process.env.INFLUXDB_BUCKET;
@@ -22,7 +22,7 @@ export function initInfluxdbClient() {
     client = new InfluxDB({url, token})
 }
 
-export async function saveLog(log: FuelLog) {
+export async function saveLog(measurement: string, log: FuelLog) {
     if (client === undefined) {
         throw new Error("Unable to initialize influxdbClient");
     }
@@ -37,7 +37,7 @@ export async function saveLog(log: FuelLog) {
 
     let writeClient = client.getWriteApi(org, bucket, 'ns')
 
-    let point = new Point('car2')
+    let point = new Point(measurement)
         .timestamp(new Date(log.timestamp))
         .floatField("amount", log.amount)
         .floatField("price", log.price)
@@ -47,7 +47,7 @@ export async function saveLog(log: FuelLog) {
     await writeClient.flush()
 }
 
-export function getLogs() {
+export async function getLogs(measurement: string): Promise<FuelLog[]> {
     if (client === undefined) {
         throw new Error("Unable to initialize influxdbClient");
     }
@@ -61,20 +61,20 @@ export function getLogs() {
     }
 
     let queryClient = client.getQueryApi(org)
-    let fluxQuery = `from(bucket: "FuelLog")
- |> range(start: -70m)
- |> filter(fn: (r) => r._measurement == "car1")`
+    let fluxQuery = `
+    import "influxdata/influxdb/schema"
+    from(bucket: "FuelLog")
+     |> range(start: -70m)
+     |> filter(fn: (r) => r._measurement == "` + measurement + `")
+     |> schema.fieldsAsCols()` //TODO: Add other filters
 
-    queryClient.queryRows(fluxQuery, {
-        next: (row, tableMeta) => {
-            const tableObject = tableMeta.toObject(row)
-            console.log(tableObject)
-        },
-        error: (error) => {
-            console.error('\nError', error)
-        },
-        complete: () => {
-            console.log('\nSuccess')
-        },
-    })
+    const res: any[] = await queryClient.collectRows(fluxQuery);
+    return res.map(elem => {
+        if ("_time" in elem) {
+            elem.timestamp = elem["_time"];
+
+            const parsed = zFuelLog.safeParse(elem);
+            return parsed.success ? parsed.data : null;
+        } else return null;
+    }).filter((elem: FuelLog | null): elem is FuelLog => elem !== null);
 }

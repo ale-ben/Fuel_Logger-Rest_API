@@ -2,13 +2,12 @@
   "name": "rest-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "type": "commonjs",
   "scripts": {
     "build": "pnpm swagger-autogen && pnpm tsc",
     "start": "node dist/index.js",
     "dev": "pnpm swagger-autogen && nodemon src/index.ts",
-    "swagger-autogen": "node src/swagger.mjs",
+    "swagger-autogen": "node swagger.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

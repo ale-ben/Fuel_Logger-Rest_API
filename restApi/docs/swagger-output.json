@@ -11,9 +11,12 @@
     "http"
   ],
   "paths": {
-    "/": {
+    "/logs/new": {
       "get": {
-        "description": "",
+        "tags": [
+          "Logs"
+        ],
+        "description": "Endpoint to sign in a specific user",
         "responses": {
           "200": {
             "description": "OK"

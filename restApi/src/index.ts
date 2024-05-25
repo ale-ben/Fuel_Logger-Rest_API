@@ -1,11 +1,15 @@
 // src/index.js
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from '../docs/swagger-output.json';
 
 dotenv.config();
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.get("/", (req: Request, res: Response) => {
     res.send("Express + TypeScript Server");

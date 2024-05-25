@@ -1,12 +1,14 @@
 {
-  "name": "restApi",
+  "name": "rest-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
-    "build": "npx tsc",
+    "build": "pnpm swagger-autogen && pnpm tsc",
     "start": "node dist/index.js",
-    "dev": "nodemon src/index.ts",
+    "dev": "pnpm swagger-autogen && nodemon src/index.ts",
+    "swagger-autogen": "node src/swagger.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -19,7 +21,10 @@
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/node": "^20.12.12",
+    "@types/swagger-ui-express": "^4.1.6",
     "nodemon": "^3.1.1",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   }

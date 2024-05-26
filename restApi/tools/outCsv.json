@@ -1,0 +1,527 @@
+[
+  {
+    "timestamp": "2016-10-11T00:00:00.000Z",
+    "odometer": "510.00",
+    "amount": "31.94",
+    "price": "47.00",
+    "relPrice": "1.472"
+  },
+  {
+    "timestamp": "2016-11-14T00:00:00.000Z",
+    "odometer": "520.00",
+    "amount": "30.00",
+    "price": "44.00",
+    "relPrice": "1.467"
+  },
+  {
+    "timestamp": "2017-01-05T00:00:00.000Z",
+    "odometer": "475.00",
+    "amount": "32.15",
+    "price": "47.81",
+    "relPrice": "1.487"
+  },
+  {
+    "timestamp": "2017-02-15T00:00:00.000Z",
+    "odometer": "491.00",
+    "amount": "32.05",
+    "price": "48.60",
+    "relPrice": "1.516"
+  },
+  {
+    "timestamp": "2017-03-30T00:00:00.000Z",
+    "odometer": "531.10",
+    "amount": "34.07",
+    "price": "50.40",
+    "relPrice": "1.479"
+  },
+  {
+    "timestamp": "2017-04-22T00:00:00.000Z",
+    "odometer": "548.30",
+    "amount": "31.65",
+    "price": "47.44",
+    "relPrice": "1.499"
+  },
+  {
+    "timestamp": "2017-05-07T00:00:00.000Z",
+    "odometer": "283.50",
+    "amount": "19.40",
+    "price": "29.08",
+    "relPrice": "1.499"
+  },
+  {
+    "timestamp": "2017-05-07T00:00:00.000Z",
+    "odometer": "142.90",
+    "amount": "7.79",
+    "price": "11.51",
+    "relPrice": "1.478"
+  },
+  {
+    "timestamp": "2017-06-08T00:00:00.000Z",
+    "odometer": "658.10",
+    "amount": "33.33",
+    "price": "48.90",
+    "relPrice": "1.467"
+  },
+  {
+    "timestamp": "2017-07-22T00:00:00.000Z",
+    "odometer": "501.50",
+    "amount": "32.63",
+    "price": "47.28",
+    "relPrice": "1.449"
+  },
+  {
+    "timestamp": "2017-08-01T00:00:00.000Z",
+    "odometer": "513.70",
+    "amount": "32.60",
+    "price": "47.56",
+    "relPrice": "1.459"
+  },
+  {
+    "timestamp": "2017-09-05T00:00:00.000Z",
+    "odometer": "489.80",
+    "amount": "31.41",
+    "price": "46.77",
+    "relPrice": "1.489"
+  },
+  {
+    "timestamp": "2017-09-13T00:00:00.000Z",
+    "odometer": "625.10",
+    "amount": "37.00",
+    "price": "49.70",
+    "relPrice": "1.343"
+  },
+  {
+    "timestamp": "2017-09-18T00:00:00.000Z",
+    "odometer": "502.30",
+    "amount": "32.12",
+    "price": "41.08",
+    "relPrice": "1.279"
+  },
+  {
+    "timestamp": "2017-09-21T00:00:00.000Z",
+    "odometer": "718.20",
+    "amount": "46.62",
+    "price": "65.31",
+    "relPrice": "1.401"
+  },
+  {
+    "timestamp": "2017-09-27T00:00:00.000Z",
+    "odometer": "571.50",
+    "amount": "33.54",
+    "price": "42.63",
+    "relPrice": "1.271"
+  },
+  {
+    "timestamp": "2017-10-02T00:00:00.000Z",
+    "odometer": "510.60",
+    "amount": "33.41",
+    "price": "42.46",
+    "relPrice": "1.271"
+  },
+  {
+    "timestamp": "2017-10-08T00:00:00.000Z",
+    "odometer": "529.80",
+    "amount": "33.57",
+    "price": "42.67",
+    "relPrice": "1.271"
+  },
+  {
+    "timestamp": "2017-10-14T00:00:00.000Z",
+    "odometer": "406.00",
+    "amount": "31.51",
+    "price": "46.60",
+    "relPrice": "1.479"
+  },
+  {
+    "timestamp": "2017-10-27T00:00:00.000Z",
+    "odometer": "458.60",
+    "amount": "30.07",
+    "price": "37.89",
+    "relPrice": "1.260"
+  },
+  {
+    "timestamp": "2017-11-10T00:00:00.000Z",
+    "odometer": "761.00",
+    "amount": "46.02",
+    "price": "63.32",
+    "relPrice": "1.376"
+  },
+  {
+    "timestamp": "2017-11-23T00:00:00.000Z",
+    "odometer": "527.30",
+    "amount": "32.38",
+    "price": "42.09",
+    "relPrice": "1.300"
+  },
+  {
+    "timestamp": "2017-11-29T00:00:00.000Z",
+    "odometer": "331.30",
+    "amount": "32.70",
+    "price": "42.51",
+    "relPrice": "1.300"
+  },
+  {
+    "timestamp": "2017-12-07T00:00:00.000Z",
+    "odometer": "530.00",
+    "amount": "31.55",
+    "price": "40.67",
+    "relPrice": "1.289"
+  },
+  {
+    "timestamp": "2017-12-20T00:00:00.000Z",
+    "odometer": "665.30",
+    "amount": "41.03",
+    "price": "56.17",
+    "relPrice": "1.369"
+  },
+  {
+    "timestamp": "2018-01-07T00:00:00.000Z",
+    "odometer": "448.20",
+    "amount": "28.64",
+    "price": "43.50",
+    "relPrice": "1.519"
+  },
+  {
+    "timestamp": "2018-01-12T00:00:00.000Z",
+    "odometer": "239.60",
+    "amount": "16.76",
+    "price": "21.79",
+    "relPrice": "1.300"
+  },
+  {
+    "timestamp": "2018-01-20T00:00:00.000Z",
+    "odometer": "480.60",
+    "amount": "29.90",
+    "price": "39.08",
+    "relPrice": "1.307"
+  },
+  {
+    "timestamp": "2018-01-24T00:00:00.000Z",
+    "odometer": "167.20",
+    "amount": "9.94",
+    "price": "12.99",
+    "relPrice": "1.307"
+  },
+  {
+    "timestamp": "2018-02-02T00:00:00.000Z",
+    "odometer": "493.60",
+    "amount": "31.17",
+    "price": "40.99",
+    "relPrice": "1.315"
+  },
+  {
+    "timestamp": "2018-02-09T00:00:00.000Z",
+    "odometer": "623.20",
+    "amount": "38.32",
+    "price": "53.94",
+    "relPrice": "1.408"
+  },
+  {
+    "timestamp": "2018-02-17T00:00:00.000Z",
+    "odometer": "446.70",
+    "amount": "30.62",
+    "price": "40.02",
+    "relPrice": "1.307"
+  },
+  {
+    "timestamp": "2018-02-23T00:00:00.000Z",
+    "odometer": "221.90",
+    "amount": "13.15",
+    "price": "17.10",
+    "relPrice": "1.300"
+  },
+  {
+    "timestamp": "2018-03-04T00:00:00.000Z",
+    "odometer": "613.20",
+    "amount": "42.46",
+    "price": "64.04",
+    "relPrice": "1.508"
+  },
+  {
+    "timestamp": "2018-03-10T00:00:00.000Z",
+    "odometer": "462.10",
+    "amount": "28.29",
+    "price": "35.98",
+    "relPrice": "1.272"
+  },
+  {
+    "timestamp": "2018-03-24T00:00:00.000Z",
+    "odometer": "702.20",
+    "amount": "41.36",
+    "price": "56.29",
+    "relPrice": "1.361"
+  },
+  {
+    "timestamp": "2018-04-03T00:00:00.000Z",
+    "odometer": "635.90",
+    "amount": "39.06",
+    "price": "53.41",
+    "relPrice": "1.367"
+  },
+  {
+    "timestamp": "2018-04-14T00:00:00.000Z",
+    "odometer": "498.70",
+    "amount": "31.89",
+    "price": "41.81",
+    "relPrice": "1.311"
+  },
+  {
+    "timestamp": "2018-04-29T00:00:00.000Z",
+    "odometer": "531.80",
+    "amount": "34.49",
+    "price": "45.77",
+    "relPrice": "1.327"
+  },
+  {
+    "timestamp": "2018-05-13T00:00:00.000Z",
+    "odometer": "447.60",
+    "amount": "30.63",
+    "price": "48.67",
+    "relPrice": "1.589"
+  },
+  {
+    "timestamp": "2018-05-25T00:00:00.000Z",
+    "odometer": "667.60",
+    "amount": "46.38",
+    "price": "65.76",
+    "relPrice": "1.418"
+  },
+  {
+    "timestamp": "2018-06-01T00:00:00.000Z",
+    "odometer": "604.40",
+    "amount": "43.37",
+    "price": "62.01",
+    "relPrice": "1.430"
+  },
+  {
+    "timestamp": "2018-06-08T00:00:00.000Z",
+    "odometer": "375.90",
+    "amount": "25.42",
+    "price": "34.65",
+    "relPrice": "1.363"
+  },
+  {
+    "timestamp": "2018-06-15T00:00:00.000Z",
+    "odometer": "502.70",
+    "amount": "34.25",
+    "price": "46.68",
+    "relPrice": "1.363"
+  },
+  {
+    "timestamp": "2018-06-29T00:00:00.000Z",
+    "odometer": "164.00",
+    "amount": "24.03",
+    "price": "32.25",
+    "relPrice": "1.342"
+  },
+  {
+    "timestamp": "2018-07-08T00:00:00.000Z",
+    "odometer": "579.20",
+    "amount": "40.01",
+    "price": "56.21",
+    "relPrice": "1.405"
+  },
+  {
+    "timestamp": "2018-06-22T00:00:00.000Z",
+    "odometer": "423.90",
+    "amount": "32.37",
+    "price": "43.67",
+    "relPrice": "1.349"
+  },
+  {
+    "timestamp": "2018-08-01T00:00:00.000Z",
+    "odometer": "461.00",
+    "amount": "33.41",
+    "price": "53.42",
+    "relPrice": "1.599"
+  },
+  {
+    "timestamp": "2018-09-06T00:00:00.000Z",
+    "odometer": "491.50",
+    "amount": "31.73",
+    "price": "50.74",
+    "relPrice": "1.599"
+  },
+  {
+    "timestamp": "2018-09-12T00:00:00.000Z",
+    "odometer": "427.70",
+    "amount": "27.22",
+    "price": "43.52",
+    "relPrice": "1.599"
+  },
+  {
+    "timestamp": "2018-10-02T00:00:00.000Z",
+    "odometer": "441.30",
+    "amount": "32.15",
+    "price": "51.73",
+    "relPrice": "1.609"
+  },
+  {
+    "timestamp": "2018-11-08T00:00:00.000Z",
+    "odometer": "477.10",
+    "amount": "33.62",
+    "price": "53.76",
+    "relPrice": "1.599"
+  },
+  {
+    "timestamp": "2018-12-01T00:00:00.000Z",
+    "odometer": "438.00",
+    "amount": "33.41",
+    "price": "50.92",
+    "relPrice": "1.524"
+  },
+  {
+    "timestamp": "2018-12-22T00:00:00.000Z",
+    "odometer": "357.70",
+    "amount": "32.88",
+    "price": "47.81",
+    "relPrice": "1.454"
+  },
+  {
+    "timestamp": "2018-12-31T00:00:00.000Z",
+    "odometer": "481.60",
+    "amount": "32.26",
+    "price": "47.05",
+    "relPrice": "1.458"
+  },
+  {
+    "timestamp": "2019-01-26T00:00:00.000Z",
+    "odometer": "495.90",
+    "amount": "33.62",
+    "price": "49.05",
+    "relPrice": "1.459"
+  },
+  {
+    "timestamp": "2019-02-16T00:00:00.000Z",
+    "odometer": "483.90",
+    "amount": "32.88",
+    "price": "47.97",
+    "relPrice": "1.459"
+  },
+  {
+    "timestamp": "2019-02-21T00:00:00.000Z",
+    "odometer": "411.60",
+    "amount": "29.00",
+    "price": "42.89",
+    "relPrice": "1.479"
+  },
+  {
+    "timestamp": "2019-03-10T00:00:00.000Z",
+    "odometer": "554.90",
+    "amount": "38.36",
+    "price": "49.49",
+    "relPrice": "1.290"
+  },
+  {
+    "timestamp": "2019-03-17T00:00:00.000Z",
+    "odometer": "440.30",
+    "amount": "33.18",
+    "price": "59.07",
+    "relPrice": "1.780"
+  },
+  {
+    "timestamp": "2019-04-03T00:00:00.000Z",
+    "odometer": "498.00",
+    "amount": "33.20",
+    "price": "51.76",
+    "relPrice": "1.559"
+  },
+  {
+    "timestamp": "2019-04-18T00:00:00.000Z",
+    "odometer": "496.80",
+    "amount": "30.80",
+    "price": "40.78",
+    "relPrice": "1.324"
+  },
+  {
+    "timestamp": "2019-05-13T00:00:00.000Z",
+    "odometer": "523.50",
+    "amount": "33.53",
+    "price": "53.80",
+    "relPrice": "1.605"
+  },
+  {
+    "timestamp": "2019-06-27T00:00:00.000Z",
+    "odometer": "605.30",
+    "amount": "41.92",
+    "price": "56.31",
+    "relPrice": "1.343"
+  },
+  {
+    "timestamp": "2019-07-10T00:00:00.000Z",
+    "odometer": "455.40",
+    "amount": "31.92",
+    "price": "49.44",
+    "relPrice": "1.549"
+  },
+  {
+    "timestamp": "2019-07-31T00:00:00.000Z",
+    "odometer": "294.30",
+    "amount": "21.76",
+    "price": "35.01",
+    "relPrice": "1.609"
+  },
+  {
+    "timestamp": "2019-09-04T00:00:00.000Z",
+    "odometer": "505.90",
+    "amount": "33.06",
+    "price": "50.05",
+    "relPrice": "1.514"
+  },
+  {
+    "timestamp": "2019-09-21T00:00:00.000Z",
+    "odometer": "489.10",
+    "amount": "31.15",
+    "price": "48.56",
+    "relPrice": "1.559"
+  },
+  {
+    "timestamp": "2019-10-02T00:00:00.000Z",
+    "odometer": "455.70",
+    "amount": "31.62",
+    "price": "48.92",
+    "relPrice": "1.547"
+  },
+  {
+    "timestamp": "2019-10-18T00:00:00.000Z",
+    "odometer": "483.80",
+    "amount": "33.32",
+    "price": "51.55",
+    "relPrice": "1.547"
+  },
+  {
+    "timestamp": "2019-11-07T00:00:00.000Z",
+    "odometer": "443.10",
+    "amount": "31.81",
+    "price": "49.27",
+    "relPrice": "1.549"
+  },
+  {
+    "timestamp": "2019-11-25T00:00:00.000Z",
+    "odometer": "453.60",
+    "amount": "31.11",
+    "price": "46.88",
+    "relPrice": "1.507"
+  },
+  {
+    "timestamp": "2019-12-14T00:00:00.000Z",
+    "odometer": "440.90",
+    "amount": "30.84",
+    "price": "47.46",
+    "relPrice": "1.539"
+  },
+  {
+    "timestamp": "2020-01-02T00:00:00.000Z",
+    "odometer": "453.80",
+    "amount": "28.97",
+    "price": "45.16",
+    "relPrice": "1.559"
+  },
+  {
+    "timestamp": "2020-02-03T00:00:00.000Z",
+    "odometer": "458.50",
+    "amount": "32.53",
+    "price": "49.93",
+    "relPrice": "1.535"
+  }
+]

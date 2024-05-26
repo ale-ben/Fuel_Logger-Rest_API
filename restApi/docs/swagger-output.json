@@ -55,6 +55,30 @@
           }
         }
       }
+    },
+    "/logs/{carName}/delete": {
+      "delete": {
+        "tags": [
+          "Logs"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "carName",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
     }
   }
 }

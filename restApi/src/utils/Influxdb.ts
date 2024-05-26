@@ -1,5 +1,7 @@
 import {InfluxDB, Point} from "@influxdata/influxdb-client";
 import {FuelLog, zFuelLog} from "../types/fuelLogTypes";
+import {TimePeriod} from "../types/EndpointTypes";
+import {DeleteAPI} from '@influxdata/influxdb-client-apis'
 
 let org = process.env.INFLUXDB_ORG;
 let bucket = process.env.INFLUXDB_BUCKET;
@@ -44,6 +46,7 @@ export async function saveLog(measurement: string, log: FuelLog) {
         .floatField("odometer", log.odometer)
 
     writeClient.writePoint(point);
+
     await writeClient.flush()
 }
 
@@ -81,4 +84,37 @@ export async function getLogs(measurement: string): Promise<FuelLog[]> {
             return parsed.success ? parsed.data : null;
         } else return null;
     }).filter((elem: FuelLog | null): elem is FuelLog => elem !== null);
+}
+
+export async function deleteLogs(measurement: string, period: TimePeriod) {
+    console.log('*** DELETE DATA ***')
+
+    if (client === undefined) {
+        throw new Error("Unable to initialize influxdbClient");
+    }
+
+    if (bucket === undefined || bucket === '') {
+        throw new Error("Invalid INFLUXDB_BUCKET");
+    }
+
+    if (org === undefined || org === '') {
+        throw new Error("Invalid INFLUXDB_ORG");
+    }
+
+    const deleteAPI = new DeleteAPI(client);
+    // define time interval for delete operation
+    const stop = new Date(period.end);
+    const start = new Date(period.start);
+
+    await deleteAPI.postDelete({
+        org,
+        bucket,
+        // you can better specify orgID, bucketID in place or org, bucket if you already know them
+        body: {
+            start: start.toISOString(),
+            stop: stop.toISOString(),
+            // see https://docs.influxdata.com/influxdb/latest/reference/syntax/delete-predicate/
+            predicate: '_measurement="' + measurement + '"',
+        },
+    })
 }

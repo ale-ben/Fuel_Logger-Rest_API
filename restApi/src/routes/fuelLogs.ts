@@ -2,12 +2,13 @@ import express, {Request, Response, Router} from "express";
 import {validate} from "../middleware/typeCheck";
 import {z} from "zod";
 import {FuelLog, zFuelLog} from "../types/fuelLogTypes";
-import {getLogs, saveLog} from "../utils/Influxdb";
+import {deleteLogs, getLogs, saveLog} from "../utils/Influxdb";
+import {zTimePeriod} from "../types/EndpointTypes";
 
 
 export const router: Router = express.Router();
 
-router.post("/:carName/new", validate(z.object({body: zFuelLog})) ,(req: Request, res: Response) => {
+router.post("/:carName/new", validate(z.object({body: zFuelLog})), (req: Request, res: Response) => {
     /*
        #swagger.description = 'Endpoint to add a new fuel log' */
 
@@ -26,3 +27,11 @@ router.get("/:carName/all", async (req: Request, res: Response) => {
 
     res.json(logs);
 });
+
+router.delete("/:carName/delete", validate(z.object({query: zTimePeriod})), async (req: Request, res: Response) => {
+    const carName = req.params.carName;
+    const timePeriod = zTimePeriod.parse(req.query);
+
+    await deleteLogs(carName, timePeriod);
+    res.json({ok: true});
+})

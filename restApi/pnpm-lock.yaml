@@ -11,6 +11,9 @@ importers:
       '@influxdata/influxdb-client':
         specifier: ^1.33.2
         version: 1.33.2
+      '@influxdata/influxdb-client-apis':
+        specifier: ^1.33.2
+        version: 1.33.2(@influxdata/influxdb-client@1.33.2)
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
@@ -51,6 +54,11 @@ packages:
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
     engines: {node: '>=12'}
+
+  '@influxdata/influxdb-client-apis@1.33.2':
+    resolution: {integrity: sha512-W6x9TOAQ3AUx0RBCrCibDhSvMqN50lxJmElc3rHn7+R/9Zi35oczu8r9YMkyNlzWnksu+dcyKr8/xLv28Ot4hw==}
+    peerDependencies:
+      '@influxdata/influxdb-client': '*'
 
   '@influxdata/influxdb-client@1.33.2':
     resolution: {integrity: sha512-RT5SxH+grHAazo/YK3UTuWK/frPWRM0N7vkrCUyqVprDgQzlLP+bSK4ak2Jv3QVF/pazTnsxWjvtKZdwskV5Xw==}
@@ -587,6 +595,10 @@ snapshots:
   '@cspotcode/source-map-support@0.8.1':
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
+
+  '@influxdata/influxdb-client-apis@1.33.2(@influxdata/influxdb-client@1.33.2)':
+    dependencies:
+      '@influxdata/influxdb-client': 1.33.2
 
   '@influxdata/influxdb-client@1.33.2': {}
 

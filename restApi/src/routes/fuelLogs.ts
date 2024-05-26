@@ -18,11 +18,11 @@ router.post("/:carName/new", validate(z.object({body: zFuelLog})) ,(req: Request
     res.json({ok: true});
 });
 
-router.get("/:carName/all", (req: Request, res: Response) => {
+router.get("/:carName/all", async (req: Request, res: Response) => {
     /*
        #swagger.description = 'Endpoint to get all logs' */
     const carName = req.params.carName;
-    getLogs(carName);
+    const logs = await getLogs(carName);
 
-    res.json({ok: true});
+    res.json(logs);
 });

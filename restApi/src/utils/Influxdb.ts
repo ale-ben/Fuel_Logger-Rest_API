@@ -61,10 +61,14 @@ export async function getLogs(measurement: string): Promise<FuelLog[]> {
     }
 
     let queryClient = client.getQueryApi(org)
+
+    const now = new Date();
+    const endStr = now.getFullYear() + "-" + ((now.getMonth() + 1) < 10 ? "0" : "") + (now.getMonth() + 1) + "-" + (now.getDate()) + "T23:59:59.000Z";
+
     let fluxQuery = `
     import "influxdata/influxdb/schema"
     from(bucket: "FuelLog")
-     |> range(start: -70m)
+     |> range(start: 1970-01-01T00:00:01.000Z, stop: ` + endStr + `)
      |> filter(fn: (r) => r._measurement == "` + measurement + `")
      |> schema.fieldsAsCols()` //TODO: Add other filters
 

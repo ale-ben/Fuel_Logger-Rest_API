@@ -13,4 +13,5 @@ num-traits = "0.2.19"
 dotenvy = "0.15.7"
 lovely_env_logger = "0.6.1"
 log = "0.4.22"
-serde = "1.0.209"
+serde = "1.0.210"
+diesel = { version = "2.2.4", features = ["sqlite", "returning_clauses_for_sqlite_3_35"] }
